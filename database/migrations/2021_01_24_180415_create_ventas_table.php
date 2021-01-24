@@ -15,6 +15,13 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('idCliente')->unsigned();
+            $table->foreign('idCliente')->references('id')->on('clientes');
+            $table->bigInteger('idSucursal')->unsigned();
+            $table->foreign('idSucursal')->references('id')->on('sucursales');
+            $table->dateTime('fecha_venta');
+            $table->decimal('total', 11,2);
+            $table->string('estado',20);
             $table->timestamps();
         });
     }

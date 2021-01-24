@@ -21,9 +21,9 @@ class CreateProductosTable extends Migration
             $table->decimal('precioMayorista',11,2);
             $table->string('descripcion', 70)->nullable();
             $table->boolean('condicion')->default(1);
-            $table->integer('idCategoria')->unsigned();
+            $table->bigInteger('idCategoria')->unsigned();
             $table->foreign('idCategoria')->references('id')->on('categorias');
-            $table->integer('idProveedor')->unsigned();
+            $table->bigInteger('idProveedor')->unsigned();
             $table->foreign('idProveedor')->references('id')->on('proveedores');
             $table->timestamps();
         });
