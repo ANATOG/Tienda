@@ -15,6 +15,12 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
+            $table->integer('existencia');
+            $table->integer('idSucursal')->unsigned();
+            $table->foreign('idSucursal')->references('id')->on('sucursales');
+            $table->integer('idProducto')->unsigned();
+            $table->foreign('idProducto')->references('id')->on('productos');
+            $table->boolean('condicion')->default(1);
             $table->timestamps();
         });
     }
