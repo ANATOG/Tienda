@@ -33,7 +33,7 @@
                 <div class="form-group row">
                     <div class="col-md-6">
                         {{$buscar=''}}
-                        {{ Form::open(array('url'=>'categoria', 'method'=>'GET','autocomplete'=>'off','role'=>'search'))}}
+                        {{Form::open(array('url'=>'categoria', 'method'=>'GET','autocomplete'=>'off','role'=>'search'))}}
                         <div class="input-group">
                             <input type="search" class="form-control" name="buscar" placeholder="Buscar" value="{{$buscar}}">
                             <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Buscar</button>
@@ -46,7 +46,6 @@
                         <tr >
                            
                             <th>Categoría</th>
-                            <th>Descripción</th>
                             <th>Estado</th>
                             <th>Editar</th>
                             <th>Cambiar estado</th>
