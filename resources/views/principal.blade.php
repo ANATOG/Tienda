@@ -11,17 +11,17 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <style>body { padding-top:40px;  }
           .panel-body .btn:not(.btn-block) { width:200px;margin-bottom:50px; margin-left: 70px; margin-right: 20px;} 
-          .round-button {height: 80px;
+          .round-button {height: 60px;
           float: right;
-  line-height: 80px;  
-  width: 80px;  
-  font-size: 1em;
-  font-weight: bold;
-  border-radius: 50%;
-  background-color: #c82333;
-  color: white;
-  text-align: center;
-  cursor: pointer;}
+          line-height: 80px;  
+          width: 60px;  
+          padding-top: 2px;
+          border-radius: 100%;
+          background-color: #c82333;
+          color: white;
+          text-align: center;
+
+          cursor: pointer;}
 
           
           </style>
@@ -111,7 +111,7 @@
                       </div>
                     </div>
                     
-                    <div class="round-button "><a href="#" class="round-button">X</a></div>
+                    <div class="round-button" ><i class="far fa-times-circle fa-3x"></i></a></div>
                 </div>
             </div>
         </div>

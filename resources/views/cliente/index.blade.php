@@ -4,10 +4,14 @@
  <main class="main">
    
     <!-- Breadcrumb -->
+    <div class="banner1 breadcrumb ">
+        <img src="{{ asset('img/banner1.png') }}" alt="TiendaBanner" class="img-fluid">   
+      </div>
     <ol class="breadcrumb bg-danger">
         <li class="breadcrumb-item active"  ><a style="color: black;" href="/"> <h5>Sistema de Pedidos AmormioShop</h5> </a></li>
     </ol>
-    <div class="container-fluid">+
+    <div class="container">
+    <div class="container-fluid">
 	 <script>
         if(performance.navigation.type == 2){
             location.reload(true);
@@ -102,6 +106,7 @@
             </div>
         </div>
         <!-- Fin ejemplo de tabla Listado -->
+    </div>
     </div>
 
 
