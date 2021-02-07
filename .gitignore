@@ -2,4 +2,8 @@
 .env.backup
 .phpgit commit -
 .env
+<<<<<<< HEAD
 web.php
+=======
+
+>>>>>>> 4a28b739814bfacc58d3ce85787f8ecd1a15c032
