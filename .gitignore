@@ -2,4 +2,4 @@
 .env.backup
 .phpgit commit -
 .env
-web.php
+
