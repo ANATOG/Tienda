@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('prueba');
 });
+Route::resource('categoria', 'CategoriaController'); 
+Route::resource('cliente', 'ClienteController'); 
+Route::resource('proveedor', 'ProveedorController'); 
+Route::resource('sucursal', 'SucursalController');  
+Route::resource('producto', 'ProductoController'); 
+//Route::resource('vencido', 'VencidoController'); 
+//Route::resource('compra', 'CompraController'); 
+//Route::resource('venta', 'VentaController'); 

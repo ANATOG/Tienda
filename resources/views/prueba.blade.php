@@ -59,4 +59,50 @@
         
         modal.find('.modal-body #id_cliente').val(id_cliente);
     })
+
+     /*EDITAR proveedor EN VENTANA MODAL*/
+     $('#abrirmodalEditarPro').on('show.bs.modal', function (event) {
+        var botoneditar = $(event.relatedTarget) 
+        var nombre_modal_editar = botoneditar.data('nombre')
+        var nit_modal_editar = botoneditar.data('nit')
+        var telefono_modal_editar = botoneditar.data('telefono')
+        var direccion_modal_editar = botoneditar.data('direccion')
+        var id_proveedor = botoneditar.data('id_proveedor')
+        var modal = $(this)
+        modal.find('.modal-body #nombre').val(nombre_modal_editar);
+        modal.find('.modal-body #nit').val(nit_modal_editar);
+        modal.find('.modal-body #telefono').val(telefono_modal_editar);
+        modal.find('.modal-body #direccion').val(direccion_modal_editar);
+        modal.find('.modal-body #id_proveedor').val(id_proveedor);
+    })
+    /*INICIO ventana modal para cambiar estado de Proveedor*/
+        
+    $('#cambiarEstadoPro').on('show.bs.modal', function (event) {
+        var botoncambiarestado = $(event.relatedTarget) 
+        var id_proveedor = botoncambiarestado.data('id_proveedor')
+        var modal = $(this)
+        
+        modal.find('.modal-body #id_proveedor').val(id_proveedor);
+    })
+
+    /*EDITAR sucursal EN VENTANA MODAL*/
+    $('#abrirmodalEditarSuc').on('show.bs.modal', function (event) {
+        var botoneditar = $(event.relatedTarget) 
+        var nombre_modal_editar = botoneditar.data('nombre')
+        var direccion_modal_editar = botoneditar.data('direccion')
+        var id_sucursal = botoneditar.data('id_sucursal')
+        var modal = $(this)
+        modal.find('.modal-body #nombre').val(nombre_modal_editar);
+        modal.find('.modal-body #direccion').val(direccion_modal_editar);
+        modal.find('.modal-body #id_sucursal').val(id_sucursal);
+    })
+    /*INICIO ventana modal para cambiar estado de Sucursal*/
+        
+    $('#cambiarEstadoSuc').on('show.bs.modal', function (event) {
+        var botoncambiarestado = $(event.relatedTarget) 
+        var id_sucursal = botoncambiarestado.data('id_sucursal')
+        var modal = $(this)
+        
+        modal.find('.modal-body #id_sucursal').val(id_sucursal);
+    })
 </script>
