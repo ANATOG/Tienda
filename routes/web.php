@@ -14,11 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-<<<<<<< HEAD
-=======
 
->>>>>>> 4a28b739814bfacc58d3ce85787f8ecd1a15c032
-    return view('prueba');
+    return view('principal');
 });
 Route::resource('categoria', 'CategoriaController'); 
 Route::resource('cliente', 'ClienteController'); 
@@ -27,8 +24,5 @@ Route::resource('sucursal', 'SucursalController');
 Route::resource('producto', 'ProductoController'); 
 //Route::resource('vencido', 'VencidoController'); 
 //Route::resource('compra', 'CompraController'); 
-<<<<<<< HEAD
 //Route::resource('venta', 'VentaController'); 
-=======
 //Route::resource('venta', 'VentaController');
->>>>>>> 4a28b739814bfacc58d3ce85787f8ecd1a15c032

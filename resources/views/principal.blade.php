@@ -43,35 +43,71 @@
                 <div class="panel-body ">
                     <div class="row ">
                         <div class="col-xl-4  ">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><i class="fas fa-cash-register"></i> <br/>Ventas</a> 
+                          <a href="{{url('venta')}}" 
+                            onclick="event.preventDefault(); document.getElementById('venta-form').submit();" class="btn btn-success btn-lg" role="button"><i class="fas fa-cash-register"></i> <br/>Ventas</a> 
+                          <form id="venta-form" action="{{url('venta')}}" method="GET" style="display: none;">
+                          {{csrf_field()}}
+                          </form>
                         </div>
                         <div class="col-xl-4 ">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><i class="fas fa-cart-arrow-down"></i> <br/>Compras</a>
+                          <a href="{{url('compra')}}" 
+                            onclick="event.preventDefault(); document.getElementById('compra-form').submit();" class="btn btn-success btn-lg" role="button"><i class="fas fa-cart-arrow-down"></i> <br/>Compras</a>
+                            <form id="compra-form" action="{{url('compra')}}" method="GET" style="display: none;">
+                            {{csrf_field()}}
+                            </form>
                         </div>
                         <div class="col-xl-4 ">
-                          <a href="#" class="btn btn-success btn-lg" role="button"><i class="fas fa-shopping-basket"></i><br/>Productos</a>
+                          <a href="{{url('producto')}}" 
+                            onclick="event.preventDefault(); document.getElementById('producto-form').submit();" class="btn btn-success btn-lg" role="button"><i class="fas fa-shopping-basket"></i><br/>Productos</a>
+                          <form id="producto-form" action="{{url('producto')}}" method="GET" style="display: none;">
+                          {{csrf_field()}}
+                          </form>
                         </div>
                     </div>
                     <div class="row">
                       <div class="col-xl-4  ">
-                        <a href="#" class="btn btn-warning btn-lg" role="button"><i class="fas fa-user-tag"></i> <br/>Clientes</a> 
+                        <a href="{{url('cliente')}}" 
+                          onclick="event.preventDefault(); document.getElementById('cliente-form').submit();" class="btn btn-warning btn-lg" role="button"><i class="fas fa-user-tag"></i> <br/>Clientes</a> 
+                          <form id="cliente-form" action="{{url('cliente')}}" method="GET" style="display: none;">
+                          {{csrf_field()}}
+                          </form>
                       </div>
                       <div class="col-xl-4 ">
-                        <a href="#" class="btn btn-warning btn-lg" role="button"><i class="fas fa-users"></i> <br/>Proveedores</a>
+                        <a href="{{url('proveedor')}}" 
+                          onclick="event.preventDefault(); document.getElementById('proveedor-form').submit();" class="btn btn-warning btn-lg" role="button"><i class="fas fa-users"></i> <br/>Proveedores</a>
+                          <form id="proveedor-form" action="{{url('proveedor')}}" method="GET" style="display: none;">
+                          {{csrf_field()}}
+                          </form>
                       </div>
                       <div class="col-xl-4 ">
-                        <a href="#" class="btn btn-warning btn-lg" role="button"><i class="fas fa-store-alt"></i><br/>Sucursales</a>
+                        <a href="{{url('sucursal')}}" 
+                          onclick="event.preventDefault(); document.getElementById('sucursal-form').submit();" class="btn btn-warning btn-lg" role="button"><i class="fas fa-store-alt"></i><br/>Sucursales</a>
+                          <form id="sucursal-form" action="{{url('sucursal')}}" method="GET" style="display: none;">
+                          {{csrf_field()}}
+                          </form>
                       </div>
                     </div>
                     <div class="row ">
                       <div class="col-xl-4  ">
-                        <a href="#" class="btn btn-danger btn-lg" role="button"><i class="fas fa-file-pdf"></i> <br/>Reportes</a> 
+                        <a href="{{url('reporte')}}" 
+                          onclick="event.preventDefault(); document.getElementById('reporte-form').submit();" class="btn btn-danger btn-lg" role="button"><i class="fas fa-file-pdf"></i> <br/>Reportes</a> 
+                          <form id="reporte-form" action="{{url('reporte')}}" method="GET" style="display: none;">
+                          {{csrf_field()}}
+                          </form>
                       </div>
                       <div class="col-xl-4 ">
-                        <a href="#" class="btn btn-danger btn-lg" role="button"><i class="fas fa-book-dead"></i> <br/>Vencidos</a>
+                        <a href="{{url('vencido')}}" 
+                          onclick="event.preventDefault(); document.getElementById('vencido-form').submit();" class="btn btn-danger btn-lg" role="button"><i class="fas fa-book-dead"></i> <br/>Vencidos</a>
+                          <form id="vencido-form" action="{{url('vencido')}}" method="GET" style="display: none;">
+                          {{csrf_field()}}
+                          </form>
                       </div>
                       <div class="col-xl-4 ">
-                        <a href="#" class="btn btn-danger btn-lg" role="button"><i class="fas fa-bars"></i><br/>Categorias        </a>
+                        <a href="{{url('categoria')}}" 
+                        onclick="event.preventDefault(); document.getElementById('categoria-form').submit();" class="btn btn-danger btn-lg" role="button"><i class="fas fa-bars"></i><br/>Categorias</a>
+                        <form id="categoria-form" action="{{url('categoria')}}" method="GET" style="display: none;">
+                        {{csrf_field()}}
+                        </form>
                       </div>
                     </div>
                     
