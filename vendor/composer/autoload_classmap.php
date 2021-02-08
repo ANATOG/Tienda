@@ -19,6 +19,7 @@ return array(
     'App\\Http\\Controllers\\ProductoController' => $baseDir . '/app/Http/Controllers/ProductoController.php',
     'App\\Http\\Controllers\\ProveedorController' => $baseDir . '/app/Http/Controllers/ProveedorController.php',
     'App\\Http\\Controllers\\SucursalController' => $baseDir . '/app/Http/Controllers/SucursalController.php',
+    'App\\Http\\Controllers\\VencidoController' => $baseDir . '/app/Http/Controllers/VencidoController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
