@@ -14,7 +14,7 @@ class CreateStoreProceduraStocks extends Migration
     public function up()
     {
         //DB::unprepared('CREATE PROCEDURE llenado_stocks (IN PidSucursal integer, IN PidProducto integer)
-        //BEGIN INSERT INTO stocks (existencia, idSucursal, idProducto) VALUES (0, PidSucursal, PidProducto); END');
+        //BEGIN INSERT INTO stocks (existencia, idSucursal, idProducto) VALUES (0, PidSucursal, PidProducto); END'); cambio
 
         DB::unprepared('CREATE PROCEDURE llenado_stocks(IN PidSucursal bigint, IN PidProducto bigint) 
         BEGIN  INSERT INTO stocks (existencia, idSucursal, idProducto) VALUES (Pexistencia, PidSucursal, PidProducto); END');
