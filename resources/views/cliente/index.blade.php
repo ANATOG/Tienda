@@ -4,12 +4,7 @@
  <main class="main">
    
     <!-- Breadcrumb -->
-    <div class="banner1 breadcrumb ">
-        <img src="{{ asset('img/banner1.png') }}" alt="TiendaBanner" class="img-fluid">   
-      </div>
-    <ol class="breadcrumb bg-danger">
-        <li class="breadcrumb-item active"  ><a style="color: black;" href="/"> <h5>Sistema de Pedidos AmormioShop</h5> </a></li>
-    </ol>
+
     <div class="container">
     <div class="container-fluid">
 	 <script>
@@ -53,6 +48,7 @@
                             <th>Nombre</th>                            
                             <th>Dirección</th>
                             <th>Télefono</th>
+                            <th>Estado</th>
                             <th>Editar</th>
                             <th>Cambiar estado</th>
                         </tr>
