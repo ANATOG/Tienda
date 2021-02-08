@@ -59,12 +59,13 @@ class ProductoController extends Controller
             $productos->idCategoria=$request->idCategoria;
             $productos->idProveedor=$request->idProveedor;
             $productos->save();
+            DB::statement('call llenado_stocks(?,?)', [1,$productos->id]);
             DB::commit();
             return Redirect::to("producto");
 
         }catch(Exception $exception){
             DB::rollBack();
-            \Session::flash('message', 'Tu registro no se pudo guardar. Verfica que el código no exista'); 
+            \Session::flash('message', 'Tu registro no se pudo guardar.'.$exception); 
             \Session::flash('alert-class', 'alert-danger'); 
             return redirect()->back();        
         }
