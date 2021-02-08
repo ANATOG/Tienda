@@ -52,7 +52,6 @@
                             <th>P.Costo</th>
                             <th>P.Venta</th>
                             <th>P.Mayorista</th>
-                            <th>Imagen</th>
                             <th>Estado</th>
                             <th>Editar</th>
                             <th>Cambiar estado</th>
@@ -62,19 +61,13 @@
                         @foreach($productos as $p)
                         <tr>
                             
-                            <td>{{ $p->codigo }}</td>
+                            <td>{{ $p->id }}</td>
                             <td>{{ $p->nombre }}</td>
                             <td>{{ $p->categoria }}</td>
-                            <td>Q.{{ $p->precio }}</td>
-                            <td>{{ $p->descripcion }}</td>
-                            
-                            
-                            
-                            <td>
-                                <button  class="modal-container" type="button" data-toggle="modal" data-id="{{$p->id}}" data-extension="{{$p->extension}}" data-target="#verimagen">
-                                    <img src="{{asset('storage/img/'.$p->id.'.'.$p->extension)}}"  alt="{{$p->nombre}}" class="img-responsive" width="35px" height="35px">
-                                </button> 
-                            </td>
+                            <td>{{ $p->proveedor }}</td>
+                            <td>Q.{{ $p->precioCosto }}</td>
+                            <td>Q.{{ $p->precioVenta }}</td>
+                            <td>Q.{{ $p->precioMayorista }}</td>
 
                             
                             <td> 
@@ -93,7 +86,12 @@
                             </td>
                             
                             <td>
-                                <button type="button" class="btn btn-secondary btn-md" data-id_producto="{{$p->id}}" data-codigo="{{$p->codigo}}" data-id_categoria="{{$p->id_categoria}}" data-nombre="{{$p->nombre}}" data-descripcion="{{$p->descripcion}}" data-precio="{{$p->precio}}" data-toggle="modal" data-target="#editarProducto">
+                                <button type="button" class="btn btn-secondary btn-md" 
+                                data-id_producto="{{$p->id}}" data-precio_costo="{{$p->precioCosto}}"
+                                data-nombre="{{$p->nombre}}" data-descripcion="{{$p->descripcion}}"
+                                data-precio_venta="{{$p->precioVenta}}" data-precio_mayorista="{{$p->precioMayorista}}"
+                                data-id_proveedor="{{$p->idProveedor}}" data-id_categoria="{{$p->idCategoria}}"
+                                data-toggle="modal" data-target="#editarProducto">
 
                                   <i class="fa fa-edit fa-1x"></i> Editar
                                 </button> &nbsp;
@@ -205,33 +203,6 @@
     <!-- /.modal-dialog -->
 </div>
 <!--Fin del modal-->
-
-<div class="modal fade" id="verimagen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-danger modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Producto</h4>
-                <button type="button" class="close" id="cerrar" data-dismiss="modal" aria-label="Cerrar">
-                <span aria-hidden="true">×</span>
-                </button>
-            </div>
-        
-            <div class="modal-body">
-                <div class="row container">
-                    <div class="table-responsive">
-                        <div id="imagen" class="col-md-6" ></div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!--Fin del modal-->
-
-
     
 </main>
 <!-- /Fin del contenido principal -->

@@ -108,4 +108,35 @@
         
         modal.find('.modal-body #id_sucursal').val(id_sucursal);
     })
+
+    /*EDITAR producto EN VENTANA MODAL*/
+    $('#editarProducto').on('show.bs.modal', function (event) {
+        var botoneditar = $(event.relatedTarget) 
+        var id_producto = botoneditar.data('id_producto')
+        var precioCosto = botoneditar.data('precio_costo')
+        var precioMayorista = botoneditar.data('precio_mayorista')
+        var precioVenta = botoneditar.data('precio_venta')
+        var idProveedor = botoneditar.data('id_proveedor')
+        var idCategoria = botoneditar.data('id_categoria')
+        var nombre = botoneditar.data('nombre')
+        var descripcion = botoneditar.data('descripcion')
+        var modal = $(this)
+        modal.find('.modal-body #id_producto').val(id_producto);
+        modal.find('.modal-body #precioCosto').val(precioCosto);
+        modal.find('.modal-body #precioMayorista').val(precioMayorista);
+        modal.find('.modal-body #precioVenta').val(precioVenta);
+        modal.find('.modal-body #idCategoria').val(idCategoria);
+        modal.find('.modal-body #idProveedor').val(idProveedor);
+        modal.find('.modal-body #nombre').val(nombre);
+        modal.find('.modal-body #descripcion').val(descripcion);
+    })
+    /*INICIO ventana modal para cambiar estado de Producto*/
+        
+    $('#cambiarEstadoProducto').on('show.bs.modal', function (event) {
+        var botoncambiarestado = $(event.relatedTarget) 
+        var id_producto = botoncambiarestado.data('id_producto')
+        var modal = $(this)
+        
+        modal.find('.modal-body #id_producto').val(id_producto);
+    })
 </script>
