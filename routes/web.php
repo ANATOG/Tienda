@@ -22,7 +22,7 @@ Route::resource('cliente', 'ClienteController');
 Route::resource('proveedor', 'ProveedorController'); 
 Route::resource('sucursal', 'SucursalController');  
 Route::resource('producto', 'ProductoController'); 
-//Route::resource('vencido', 'VencidoController'); 
+Route::resource('vencido', 'VencidoController'); 
 //Route::resource('compra', 'CompraController'); 
 //Route::resource('venta', 'VentaController'); 
 //Route::resource('venta', 'VentaController');

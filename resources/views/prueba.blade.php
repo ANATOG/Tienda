@@ -99,9 +99,6 @@
         modal.find('.modal-body #id_cliente').val(id_cliente);
     })
 
-   
-
-});
      /*EDITAR proveedor EN VENTANA MODAL*/
      $('#abrirmodalEditarPro').on('show.bs.modal', function (event) {
         var botoneditar = $(event.relatedTarget) 
@@ -177,6 +174,16 @@
         var modal = $(this)
         
         modal.find('.modal-body #id_producto').val(id_producto);
+    })
+
+    /*INICIO ventana modal para cambiar estado de vencidos*/
+        
+    $('#cambiarEstadoVencido').on('show.bs.modal', function (event) {
+        var botoncambiarestado = $(event.relatedTarget) 
+        var id_vencido = botoncambiarestado.data('id_vencido')
+        var modal = $(this)
+        
+        modal.find('.modal-body #id_vencido').val(id_vencido);
     })
 
 

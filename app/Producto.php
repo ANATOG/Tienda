@@ -15,10 +15,15 @@ class Producto extends Model
                         'descripcion',
                         'condicion',
                         'idCategoria',
-                        'idProveedor'];
+                        'idProveedor']; 
 
     public function categoria(){
         return $this->belongsTo('App\Categoria');
+    }
+
+    public function vencidos()
+    {
+        return $this->hasMany('App\Vencido', 'idProducto');
     }
 
     public function proveedor(){

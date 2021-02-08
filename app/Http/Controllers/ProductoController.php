@@ -65,7 +65,7 @@ class ProductoController extends Controller
 
         }catch(Exception $exception){
             DB::rollBack();
-            \Session::flash('message', 'Tu registro no se pudo guardar.'.$exception); 
+            \Session::flash('message', 'Tu registro no se pudo guardar.'); 
             \Session::flash('alert-class', 'alert-danger'); 
             return redirect()->back();        
         }
