@@ -4,10 +4,8 @@
  <main class="main">
    
     <!-- Breadcrumb -->
-    <ol class="breadcrumb bg-danger">
-        <li class="breadcrumb-item active"  ><a style="color: black;" href="/"> <h5>Sistema de Pedidos AmormioShop</h5> </a></li>
-    </ol>
-    <div class="container-fluid">+
+    
+    <div class="container-fluid">
 	 <script>
         if(performance.navigation.type == 2){
             location.reload(true);
