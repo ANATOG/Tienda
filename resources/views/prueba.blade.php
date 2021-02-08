@@ -12,21 +12,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Tienda</title>
-    <style>body { padding-top:40px;  }
-        .banner1 .btn:not(.btn-block) { width:200px;margin-bottom:50px; margin-left: 70px; margin-right: 20px;} 
-        
-        .round-button {height: 60px;
-          float: right;
-          line-height: 80px;  
-          width: 60px;  
-          border-radius: 50%;
-          background-color: #c82333;
-          color: white;
-          text-align: center;
-          padding-top :  -10px;
-          cursor: pointer;}
-
-        
+    <style>
+        .round-button {
+            height: 60px;
+            
+            margin-right: 65px;
+            line-height: 40px;  
+            width: 60px;  
+            border-radius: 50%;
+            
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+        .boton {
+            float: right;
+            position: fixed;
+            z-index: 2;   
+            margin-top:50px;
+            margin-left:1000px;
+            margin-right: 50px;
+        }
         </style>
 </head>
 <body background="{{ asset('img/Background.jpg') }}" style="background-repeat: no-repeat; " alt="TiendaBanner" class="img-fluid"> 
@@ -35,8 +41,15 @@
         <div class="banner1 col-md-12 col-sm-12">
             <img src="{{ asset('img/banner1.png') }}" alt="TiendaBanner" class="img-fluid">   
         </div> 
-        <div class="round-button" ><i class="fas fa-arrow-left"></i></a></div>
+        <div class="boton" >
+            
+            <a href="{{url('/')}}" style="color: white"  class="btn round-button btn-danger btn-lg " role="button"><i class="fas fa-arrow-left"></i></a> 
+                         
+        </div>
         @yield('contenido')
+        
+       
+        
     </div>
 </body>
 </html>
@@ -86,6 +99,9 @@
         modal.find('.modal-body #id_cliente').val(id_cliente);
     })
 
+   
+
+});
      /*EDITAR proveedor EN VENTANA MODAL*/
      $('#abrirmodalEditarPro').on('show.bs.modal', function (event) {
         var botoneditar = $(event.relatedTarget) 
@@ -162,4 +178,6 @@
         
         modal.find('.modal-body #id_producto').val(id_producto);
     })
+
+
 </script>
