@@ -157,103 +157,88 @@
 <!-- JS para venta -->
 <script>
     $("#agregarc").click(function(){
-
-    agregarc();
+        agregarc();
     });
 
     var contc=0;
     totalc=0;
     subtotalc=[];
+    $("#id_productoc").prepend('<option selected="true" value="0" disabled>Seleccione</option>');
     $("#guardarc").hide();
     $("#id_productoc").change(mostrarValoresc);
 
     function mostrarValoresc(){
-
-    datosProductoc = document.getElementById('id_productoc').value.split('_');
-    $("#precio_ventac").val(datosProductoc[2]);
-    $("#stockc").val(datosProductoc[1]);
-
+        datosProductoc = document.getElementById('id_productoc').value.split('_');
+        $("#precio_ventac").val(datosProductoc[2]);
+        $("#stockc").val(datosProductoc[1]);
     } 
 
     function agregarc(){
+        datosProductoc = document.getElementById('id_productoc').value.split('_');
 
-    datosProductoc = document.getElementById('id_productoc').value.split('_');
-
-    id_productoc= datosProductoc[0];
-    productoc= $("#id_productoc option:selected").text();
-    cantidadc= $("#cantidadc").val();
-    precio_ventac= $("#precio_ventac").val();
-    stockc= $("#stockc").val();
-    impuestoc=20;
-    
-    if(id_productoc !="" && cantidadc!="" && cantidadc>0  && precio_ventac!=""){
-
-        if(parseInt(stockc)>=parseInt(cantidadc)){
-
-            subtotalc[contc]=(cantidadc*precio_ventac);
-            totalc= totalc+subtotalc[contc];
-
-            var filac= '<tr class="selected" id="filac'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times fa-2x"></i></button></td> <td><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input type="number" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"> </td> <td><input type="number" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
-            contc++;
-            limpiarc();
-            totalesc();   
-            evaluarc();
-            $('#detallesc').append(filac);
-
-        } else{
-
-            alert("La cantidad a vender supera el stock");       
-            
-        }
+        id_productoc= datosProductoc[0];
+        productoc= $("#id_productoc option:selected").text();
+        cantidadc= $("#cantidadc").val();
+        precio_ventac= $("#precio_ventac").val();
+        stockc= $("#stockc").val();
+        impuestoc=20;
         
-    }else{
+        if(id_productoc !="" && cantidadc!="" && cantidadc>0  && precio_ventac!=""){
+            if(parseInt(stockc)>=parseInt(cantidadc)){
+                subtotalc[contc]=(cantidadc*precio_ventac);
+                totalc= totalc+subtotalc[contc];
+                
+                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times fa-2x"></i></button></td> <td><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input type="number" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"> </td> <td><input type="number" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
+                alert("hola");
+                contc++;
+                limpiarc();
+                totalesc();   
+                evaluarc();
+                $('#detallesc').append(filac);
+            } else{
+                alert("La cantidad a vender supera el stock");
+            }
+            
+        }else{
+            alert("Rellene todos los campos del detalle de la venta")
+        }
 
-        alert("Rellene todos los campos del detalle de la venta");        
-    
     }
-
-    }
-
 
     function limpiarc(){
-
-    $("#cantidadc").val("");
-    $("#precio_ventac").val("");
-
+        $("#cantidadc").val("");
+        $("#precio_ventac").val("");
+        $("#stockc").val("");
+        $("#id_productoc").prepend('<option selected="true" value="0" disabled>Seleccione</option>');
     }
 
     function totalesc(){
-
-    $("#totalc").html("Q. " + totalc.toFixed(2));
-    total_pagarc=totalc;
-    $("#total_pagar_htmlc").html("Q. " + total_pagarc.toFixed(2));
-    $("#total_pagarc").val(total_pagarc.toFixed(2));
+        $("#totalc").html("Q. " + totalc.toFixed(2));
+        total_pagarc=totalc;
+        $("#total_pagar_htmlc").html("Q. " + total_pagarc.toFixed(2));
+        $("#total_pagarc").val(total_pagarc.toFixed(2));
     }
-
 
     function evaluarc(){
-
-    if(totalc>0){
-
-    $("#guardarc").show();
-
-    } else{
-        
-    $("#guardarc").hide();
-    }
+        if(totalc>0){
+            $("#guardarc").show();
+        } else{            
+            $("#guardarc").hide();
+        }
     }
 
     function eliminarc(indexc){
+        totalc=totalc-subtotalc[indexc];
+        total_pagar_htmlc = totalc;
 
-    totalc=totalc-subtotalc[indexc];
-    total_pagar_htmlc = totalc;
+        $("#totalc").html("USD$" + totalc);
+        $("#total_pagar_htmlc").html("Q." + total_pagar_htmlc);
+        $("#total_pagarc").val(total_pagar_htmlc.toFixed(2));
 
-    $("#totalc").html("USD$" + totalc);
-    $("#total_pagar_htmlc").html("Q." + total_pagar_htmlc);
-    $("#total_pagarc").val(total_pagar_htmlc.toFixed(2));
+        $("#filac" + indexc).remove();
+        evaluarc();
+    }
 
-    $("#filac" + indexc).remove();
-    evaluarc();
 </script>
 
 <!-- /Fin JS venta -->

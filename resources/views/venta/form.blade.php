@@ -21,8 +21,7 @@
     <div class="row">
         <div class="form-group col-md-4"> 
             <label class="form-control-label" for="nombre">Productos</label>
-            <select class="form-control selectpicker" name="id_productoc" id="id_productoc" data-live-search="true">                                                            
-                <option value="0" selected>Seleccione</option>                            
+            <select class="form-control selectpicker" name="id_productoc" id="id_productoc" data-live-search="true">                               
                 @foreach($productos as $prod)                            
                 <option value="{{$prod->id}}_{{$prod->existencia}}_{{$prod->precioVenta}}">{{$prod->nombre}}</option>                                    
                  @endforeach
@@ -34,11 +33,11 @@
         </div>
         <div class="form-group col-md-2">
             <label for="inputEmail4">Stock</label>  
-            <input type="number" disabled id="stockc" name="stockc" class="form-control" placeholder="Ingrese stock" pattern="[0-9]{0,15}">
+            <input type="number" disabled id="stockc" name="stockc" class="form-control" placeholder="Stock" pattern="[0-9]{0,15}">
         </div>
         <div class="form-group col-md-2">
             <label for="inputEmail4">Precio</label>
-            <input type="number" disabled id="precio_ventac" name="precio_ventac" class="form-control" placeholder="Ingrese precio" pattern="[0-9]{0,15}">                        
+            <input type="number" disabled id="precio_ventac" name="precio_ventac" class="form-control" placeholder="Precio" pattern="[0-9]{0,15}">                        
         </div>
         <div class="form-group col-md-6">                        
             <button type="button" id="agregarc" class="btn btn-primary"><i class="fa fa-plus fa-2x"></i> Agregar detalle</button>
