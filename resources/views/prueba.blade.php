@@ -186,5 +186,13 @@
         modal.find('.modal-body #id_vencido').val(id_vencido);
     })
 
+    $('#anularventa').on('show.bs.modal', function (event) {
+        var botoncambiarestado = $(event.relatedTarget) 
+        var id_venta = botoncambiarestado.data('id_venta')
+        var modal = $(this)
+        
+        modal.find('.modal-body #id_venta').val(id_venta);
+    })
+
 
 </script>

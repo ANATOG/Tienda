@@ -26,7 +26,8 @@ class ProductoController extends Controller
                 $consulta = trim($request->get('buscar'));
                 $productos = Producto::join('categorias', 'productos.idCategoria', '=', 'categorias.id') 
                                 ->join('proveedores', 'productos.idProveedor', '=', 'proveedores.id') 
-                                ->select('productos.*', 'categorias.nombre as categoria', 'proveedores.nombre as proveedor')                  
+                                ->join('stocks', 'stocks.idProducto', '=', 'productos.id')
+                                ->select('productos.*', 'categorias.nombre as categoria', 'proveedores.nombre as proveedor', 'stocks.existencia as existencia')                  
                                 ->where('productos.nombre', 'LIKE', '%'.$consulta.'%')
                                 ->orderBy('productos.nombre')
                                 ->paginate(15);

@@ -20,4 +20,13 @@ class Venta extends Model
     public function cliente(){
         return $this->belongsTo('App\Cliente');
     }
+
+    public function detalles(){
+        return $this->hasMany('App\DetalleVenta');
+    }
+
+    public function productos(){
+        return $this->belongsToMany('App\Producto', 'detalle_ventas', 'idVenta','idProductos')
+        ->withPivot('cantidad', 'precio');    
+    }
 }

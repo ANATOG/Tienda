@@ -50,6 +50,7 @@
                             <th>P.Costo</th>
                             <th>P.Venta</th>
                             <th>P.Mayorista</th>
+                            <th>Existencia</th>
                             <th>Estado</th>
                             <th>Editar</th>
                             <th>Cambiar estado</th>
@@ -66,6 +67,7 @@
                             <td>Q.{{ $p->precioCosto }}</td>
                             <td>Q.{{ $p->precioVenta }}</td>
                             <td>Q.{{ $p->precioMayorista }}</td>
+                            <td>{{ $p->existencia }}</td>
 
                             
                             <td> 
