@@ -57,7 +57,7 @@
     <br/><br/>
     
     <div CLASS="container">
-        <table id="detallesc" class="table table-bordered table-striped table-sm">
+        <table id="detallesc" class="table table-hover table-sm table-responsive">
             <thead class="bg-danger text-white">
                 <tr>
                     <th>Eliminar</th>

@@ -42,7 +42,7 @@
                 <table class="table table-hover table-sm table-responsive">
                     <thead class="bg-dark text-white" >
                         <tr >
-                           
+                            
                             <th>ID</th>
                             <th>Fecha</th>
                             <th>Cliente</th>
@@ -208,7 +208,7 @@
         $("#cantidadc").val("");
         $("#precio_ventac").val("");
         $("#stockc").val("");
-        document.ready = document.getElementById("id_productoc").value = '0';
+        document.ready = document.getElementById("id_productoc").value = '';
     }
 
     function totalesc(){
