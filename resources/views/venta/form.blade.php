@@ -59,10 +59,10 @@
             <thead class="bg-danger text-white">
                 <tr>
                     <th>Eliminar</th>
-                    <th>Medicamento</th>
+                    <th>Producto</th>
                     <th>Precio(Q.)</th>
                     <th>Cantidad</th>
-                    <th>SubTotal (Q.)</th>
+                    <th>SubTotal</th>
                 </tr>
             </thead>                                    
             <tfoot class="bg-light">
