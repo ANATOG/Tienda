@@ -208,7 +208,8 @@
         $("#cantidadc").val("");
         $("#precio_ventac").val("");
         $("#stockc").val("");
-        document.ready = document.getElementById("id_productoc").value = '';
+        $("#id_productoc")[0].selectize.clear();
+        
     }
 
     function totalesc(){

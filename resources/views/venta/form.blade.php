@@ -29,7 +29,7 @@
         <div class="row">
             <div class="form-group col-md-4"> 
                 
-                <select class="form-control selectpicker" name="id_productoc" id="id_productoc" data-live-search="true">                                                            
+                <select class="form-control selectpicker" name="id_productoc" id="id_productoc" data-live-search="true" data-default-value="">                                                            
                     <option value="" selected disabled>Seleccione producto</option>                            
                     @foreach($productos as $prod)                            
                     <option value="{{$prod->id}}_{{$prod->existencia}}_{{$prod->precioVenta}}">{{$prod->nombre}}</option>                                    
@@ -94,13 +94,3 @@
         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times fa-2x"></i> Cerrar</button>
         <button type="submit" class="btn btn-success"><i class="fa fa-save fa-2x"></i> Guardar</button>
     </div>
-
-<script>
-    jQuery(document).ready(function($){
-    $(document).ready(function() {
-        $('.mi-selector').select2();
-    });
-});
-
-
-</script>
