@@ -170,6 +170,7 @@
         datosProductoc = document.getElementById('id_productoc').value.split('_');
         $("#precio_ventac").val(datosProductoc[2]);
         $("#stockc").val(datosProductoc[1]);
+        document.getElementById("cantidadc").disabled = false;
     } 
 
     function agregarc(){
@@ -209,6 +210,7 @@
         $("#precio_ventac").val("");
         $("#stockc").val("");
         $("#id_productoc")[0].selectize.clear();
+        document.getElementById("cantidadc").disabled = true;
         
     }
 

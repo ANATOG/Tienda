@@ -28,7 +28,6 @@
     
         <div class="row">
             <div class="form-group col-md-4"> 
-                
                 <select class="form-control selectpicker" name="id_productoc" id="id_productoc" data-live-search="true" data-default-value="">                                                            
                     <option value="" selected disabled>Seleccione producto</option>                            
                     @foreach($productos as $prod)                            
@@ -38,10 +37,9 @@
             </div>
             <div class="form-group col-md-2">
                   
-                <input type="number" id="cantidadc" name="cantidadc" class="form-control" placeholder="Cantidad" pattern="[0-9]{0,15}">
+                <input type="number" id="cantidadc" name="cantidadc" class="form-control" placeholder="Cantidad"  min="1" pattern="[0-9]{0,15}" disabled>
             </div>
             <div class="form-group col-md-2">
-                
                 <input type="number" disabled id="stockc" name="stockc" class="form-control" placeholder="Stock" pattern="[0-9]{0,15}">
             </div>
             <div class="form-group col-md-2">
