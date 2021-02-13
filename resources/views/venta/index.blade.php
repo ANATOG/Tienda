@@ -162,8 +162,7 @@
 
     var contc=0;
     totalc=0;
-    subtotalc=[];
-    $("#id_productoc").prepend('<option selected="true" value="0" disabled>Seleccione</option>');
+    subtotalc=[];    
     $("#guardarc").hide();
     $("#id_productoc").change(mostrarValoresc);
 
@@ -209,7 +208,7 @@
         $("#cantidadc").val("");
         $("#precio_ventac").val("");
         $("#stockc").val("");
-        $("#id_productoc").prepend('<option selected="true" value="0" disabled>Seleccione</option>');
+        document.ready = document.getElementById("id_productoc").value = '0';
     }
 
     function totalesc(){

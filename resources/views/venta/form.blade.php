@@ -21,7 +21,8 @@
     <div class="row">
         <div class="form-group col-md-4"> 
             <label class="form-control-label" for="nombre">Productos</label>
-            <select class="form-control selectpicker" name="id_productoc" id="id_productoc" data-live-search="true">                               
+            <select class="form-control selectpicker" name="id_productoc" id="id_productoc" data-live-search="true">                                                            
+                <option value="0" selected disabled>Seleccione</option>                            
                 @foreach($productos as $prod)                            
                 <option value="{{$prod->id}}_{{$prod->existencia}}_{{$prod->precioVenta}}">{{$prod->nombre}}</option>                                    
                  @endforeach
