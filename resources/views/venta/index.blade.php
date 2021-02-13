@@ -96,9 +96,9 @@
    <div class="modal fade bd-example-modal-lg" id="nuevaventa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-danger modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-danger text-white">
                 <h4 class="modal-title">Registrar venta</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close ">
                   <span aria-hidden="true">×</span>
                 </button>
             </div>
@@ -187,8 +187,8 @@
                 subtotalc[contc]=(cantidadc*precio_ventac);
                 totalc= totalc+subtotalc[contc];
                 
-                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times fa-2x"></i></button></td> <td><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input type="number" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"> </td> <td><input type="number" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
-                alert("hola");
+                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times"></i></button></td> <td><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"> </td> <td><input type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
+            
                 contc++;
                 limpiarc();
                 totalesc();   
