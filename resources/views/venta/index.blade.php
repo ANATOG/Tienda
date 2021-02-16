@@ -167,19 +167,35 @@
     $("#id_productoc").change(mostrarValoresc);
 
     function mostrarValoresc(){
+        $("#precio_ventac").empty(); //limpiar el select de precios
+        $("#precio_ventac").prepend('<option selected value="" disabled>Precio</option>');
         datosProductoc = document.getElementById('id_productoc').value.split('_');
-        $("#precio_ventac").val(datosProductoc[2]);
+
+        //habilitar el input y select de cantidad y precio
         $("#stockc").val(datosProductoc[1]);
         document.getElementById("cantidadc").disabled = false;
+        document.getElementById("precio_ventac").disabled = false;
+
+        ///agregar precios al select
+        var x = document.getElementById('precio_ventac');
+        for ( i = 2; i <= 4; i += 1 ) {
+            var option = document.createElement("option");
+            option.text = datosProductoc[i];
+            option.value = parseFloat(datosProductoc[i]).toFixed(2);
+            x.add(option); 
+        }
     } 
 
     function agregarc(){
         datosProductoc = document.getElementById('id_productoc').value.split('_');
-
         id_productoc= datosProductoc[0];
         productoc= $("#id_productoc option:selected").text();
         cantidadc= $("#cantidadc").val();
         precio_ventac= $("#precio_ventac").val();
+        /*precio_ventac=datosProductoc[2];
+        precio_mayoristac= datosProductoc[3];
+        precio_costoc= datosProductoc[4];*/
+
         stockc= $("#stockc").val();
         impuestoc=20;
         
@@ -187,9 +203,11 @@
             if(parseInt(stockc)>=parseInt(cantidadc)){
                 subtotalc[contc]=(cantidadc*precio_ventac);
                 totalc= totalc+subtotalc[contc];
+                //<td><input type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>
+                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times">      </i></button></td> <td><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input readonly type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>  <td><input readonly type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
                 
-                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times"></i></button></td> <td><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"> </td> <td><input type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
-            
+               
+                
                 contc++;
                 limpiarc();
                 totalesc();   
@@ -210,7 +228,10 @@
         $("#precio_ventac").val("");
         $("#stockc").val("");
         $("#id_productoc")[0].selectize.clear();
+        $("#precio_ventac").empty();
+        $("#precio_ventac").prepend('<option selected value="" disabled>Precio</option>');
         document.getElementById("cantidadc").disabled = true;
+        document.getElementById("precio_ventac").disabled = true;
         
     }
 
@@ -233,8 +254,8 @@
         totalc=totalc-subtotalc[indexc];
         total_pagar_htmlc = totalc;
 
-        $("#totalc").html("USD$" + totalc);
-        $("#total_pagar_htmlc").html("Q." + total_pagar_htmlc);
+        $("#totalc").html("Q." + totalc.toFixed(2));
+        $("#total_pagar_htmlc").html("Q." + total_pagar_htmlc.toFixed(2));
         $("#total_pagarc").val(total_pagar_htmlc.toFixed(2));
 
         $("#filac" + indexc).remove();

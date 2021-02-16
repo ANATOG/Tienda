@@ -31,7 +31,7 @@
                 <select class="form-control selectpicker" name="id_productoc" id="id_productoc" data-live-search="true" data-default-value="">                                                            
                     <option value="" selected disabled>Seleccione producto</option>                            
                     @foreach($productos as $prod)                            
-                    <option value="{{$prod->id}}_{{$prod->existencia}}_{{$prod->precioVenta}}">{{$prod->nombre}}</option>                                    
+                    <option value="{{$prod->id}}_{{$prod->existencia}}_{{$prod->precioVenta}}_{{$prod->precioMayorista}}_{{$prod->precioCosto}}">{{$prod->nombre}}</option>                                    
                     @endforeach
                 </select>
             </div>
@@ -43,8 +43,9 @@
                 <input type="number" disabled id="stockc" name="stockc" class="form-control" placeholder="Stock" pattern="[0-9]{0,15}">
             </div>
             <div class="form-group col-md-2">
-                
-                <input type="number" disabled id="precio_ventac" name="precio_ventac" class="form-control" placeholder="Precio" pattern="[0-9]{0,15}">                        
+                <select class="form-control" name="precio_ventac" id="precio_ventac" disabled>                                                            
+                    <option value="" selected disabled>Precio</option> 
+                </select>
             </div>
             <div class="form-group col-md-2">   
                 <button type="button" id="agregarc" class="btn btn-danger round-button"><i class="fa fa-plus "></i></button>  
@@ -81,14 +82,9 @@
     </div>
     <div class="modal-footer form-group row" id="guardarc">            
         <div class="col-md">
-        <input type="hidden" name="_token" value="{{csrf_token()}}">              
-            <button type="submit" class="btn btn-success"><i class="fa fa-save fa-2x"></i> Registrar</button>            
+            <input type="hidden" name="_token" value="{{csrf_token()}}">              
+            <button type="submit" class="btn btn-success"><i class="fa fa-save fa-2x"></i> Guardar</button>            
         </div>
     </div>
     
-   
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times fa-2x"></i> Cerrar</button>
-        <button type="submit" class="btn btn-success"><i class="fa fa-save fa-2x"></i> Guardar</button>
-    </div>
+    
