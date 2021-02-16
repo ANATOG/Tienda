@@ -197,7 +197,7 @@
         impuestoc=20;
 
         if (checkId(productoc)) {
-  	        return alert('El ID ya está siendo usado');
+  	        return alert('El producto ya esta agregado');
         }
         
         if(id_productoc !="" && cantidadc!="" && cantidadc>0  && precio_ventac!=""){
