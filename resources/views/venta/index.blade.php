@@ -192,22 +192,21 @@
         productoc= $("#id_productoc option:selected").text();
         cantidadc= $("#cantidadc").val();
         precio_ventac= $("#precio_ventac").val();
-        /*precio_ventac=datosProductoc[2];
-        precio_mayoristac= datosProductoc[3];
-        precio_costoc= datosProductoc[4];*/
 
         stockc= $("#stockc").val();
         impuestoc=20;
+
+        if (checkId(productoc)) {
+  	        return alert('El ID ya está siendo usado');
+        }
         
         if(id_productoc !="" && cantidadc!="" && cantidadc>0  && precio_ventac!=""){
             if(parseInt(stockc)>=parseInt(cantidadc)){
                 subtotalc[contc]=(cantidadc*precio_ventac);
                 totalc= totalc+subtotalc[contc];
                 //<td><input type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>
-                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times">      </i></button></td> <td><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input readonly type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>  <td><input readonly type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
-                
-               
-                
+                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times">      </i></button></td> <td for="id"><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input readonly type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>  <td><input readonly type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
+            
                 contc++;
                 limpiarc();
                 totalesc();   
@@ -221,6 +220,11 @@
             alert("Rellene todos los campos del detalle de la venta")
         }
 
+    }
+
+    function checkId (id) {
+	    let ids = document.querySelectorAll('#detallesc td[for="id"]');
+        return [].filter.call(ids, td => td.textContent === id).length === 1;
     }
 
     function limpiarc(){
