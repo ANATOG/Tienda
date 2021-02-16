@@ -112,7 +112,7 @@ class VentaController extends Controller
             {
                 $ventas->estado='0';
                 $ventas->save();
-                $detalles = DetalleVenta::select('detalle_ventas.*')->where('detalle_ventas.idVenta', '=', 21)->get();
+                $detalles = DetalleVenta::select('detalle_ventas.*')->where('detalle_ventas.idVenta', '=', $ventas->id)->get();
                 foreach($detalles as $d){
                     DB::statement('call devuelve_stocks(?,?)', [$d->idProductos,$d->cantidad]);
                 }
