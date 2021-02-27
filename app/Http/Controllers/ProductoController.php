@@ -138,4 +138,20 @@ class ProductoController extends Controller
         
     }
 
+    public function selectProducto(Request $request, $id)
+    {
+        try {
+            $productos= Producto::where('condicion','=','1')
+            ->where('idProveedor','=',$id)
+            ->select('id','nombre')
+            ->orderBy('nombre', 'asc')
+            ->get();
+            return response()->json($productos);
+        }catch(Exception $exception) {
+            \Session::flash('message', 'Error'); 
+            \Session::flash('alert-class', 'alert-warning'); 
+            return redirect()->back();
+        }
+    }
+
 }

@@ -158,6 +158,17 @@
 
 <!-- JS para venta -->
 <script>
+    $("#idProveedor").change(function(event)
+    {
+        $.get("/selectProducto/"+event.target.value+"", function(response, selectProducto){
+            $("#id_producto").empty();
+            $("#id_producto").append("<option value=''>Seleccione</option>");
+            for (i=0;i<response.length;i++){
+                $("#id_producto").append("<option value='"+response[i].id+"'>"+response[i].nombre+"</option>");
+            }
+        });   
+    });
+
     $("#agregarc").click(function(){
         agregarc();
     });
@@ -166,60 +177,38 @@
     totalc=0;
     subtotalc=[];    
     $("#guardarc").hide();
-    $("#id_productoc").change(mostrarValoresc);
+    $("#id_producto").change(mostrarValoresc);
 
     function mostrarValoresc(){
-        $("#precio_ventac").empty(); //limpiar el select de precios
-        $("#precio_ventac").prepend('<option selected value="" disabled>Precio</option>');
-        datosProductoc = document.getElementById('id_productoc').value.split('_');
-
+      
         //habilitar el input y select de cantidad y precio
-        $("#stockc").val(datosProductoc[1]);
-        document.getElementById("cantidadc").disabled = false;
-        document.getElementById("precio_ventac").disabled = false;
-
-        ///agregar precios al select
-        var x = document.getElementById('precio_ventac');
-        for ( i = 2; i <= 4; i += 1 ) {
-            var option = document.createElement("option");
-            option.text = datosProductoc[i];
-            option.value = parseFloat(datosProductoc[i]).toFixed(2);
-            x.add(option); 
-        }
+        document.getElementById("cantidad").disabled = false;
+        document.getElementById("precio").disabled = false;
     } 
 
     function agregarc(){
-        datosProductoc = document.getElementById('id_productoc').value.split('_');
-        id_productoc= datosProductoc[0];
-        productoc= $("#id_productoc option:selected").text();
-        cantidadc= $("#cantidadc").val();
-        precio_ventac= $("#precio_ventac").val();
-
-        stockc= $("#stockc").val();
-        impuestoc=20;
+        datosProductoc = document.getElementById('id_producto').value.split('_');
+        id_producto= datosProductoc[0];
+        productoc= $("#id_producto option:selected").text();
+        cantidad= $("#cantidad").val();
+        precio= $("#precio").val();
 
         if (checkId(productoc)) {
   	        return alert('El producto ya esta agregado');
         }
         
-        if(id_productoc !="" && cantidadc!="" && cantidadc>0  && precio_ventac!=""){
-            if(parseInt(stockc)>=parseInt(cantidadc)){
-                subtotalc[contc]=(cantidadc*precio_ventac);
+        if(id_producto !="" && cantidad!="" && cantidad>0  && precio!=""){
+                subtotalc[contc]=(cantidad*precio);
                 totalc= totalc+subtotalc[contc];
-                //<td><input type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>
-                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times">      </i></button></td> <td for="id"><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input readonly type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>  <td><input readonly type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
+                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times">      </i></button></td> <td for="id"><input type="hidden" name="id_producto[]" value="'+id_producto+'">'+productoc+'</td> <td><input readonly type="number" class="form-control" name="precio[]" value="'+parseFloat(precio).toFixed(2)+'"></td>  <td><input readonly type="number" class="form-control" name="cantidad[]" value="'+cantidad+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
             
                 contc++;
                 limpiarc();
                 totalesc();   
                 evaluarc();
-                $('#detallesc').append(filac);
-            } else{
-                alert("La cantidad a vender supera el stock");
-            }
-            
+                $('#detallesc').append(filac);            
         }else{
-            alert("Rellene todos los campos del detalle de la venta")
+            alert("Rellene todos los campos del detalle de la compra")
         }
 
     }
@@ -230,14 +219,11 @@
     }
 
     function limpiarc(){
-        $("#cantidadc").val("");
-        $("#precio_ventac").val("");
-        $("#stockc").val("");
-        $("#id_productoc")[0].selectize.clear();
-        $("#precio_ventac").empty();
-        $("#precio_ventac").prepend('<option selected value="" disabled>Precio</option>');
-        document.getElementById("cantidadc").disabled = true;
-        document.getElementById("precio_ventac").disabled = true;
+        $("#cantidad").val("");
+        $("#precio").val("");
+        $("#id_producto").empty();      
+        document.getElementById("cantidad").disabled = true;
+        document.getElementById("precio").disabled = true;
         
     }
 

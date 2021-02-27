@@ -6,7 +6,7 @@
         <div class="row">        
             <div class="form-group col-md-4">
                  
-                <input type="date" class="form-control" value="<?php echo date("Y-m-d");?>" id="nombre" name="nombre"  disabled>        
+                <input type="date" class="form-control" value="{{$fec}}" id="fecha" name="fecha"  disabled>        
             </div>
             <div class="form-group col-md-8"> 
                 <select class="form-control selectpicker" name="idCliente" id="idCliente" required data-live-search="true">                                                            

@@ -40,7 +40,9 @@ class VentaController extends Controller
                 ->get();
             //$totalMonth= Pedido::totalMonth();
             //$totalMounthCount= Pedido::totalMonthCount();
-            return view ('venta.index', ['ventas'=>$ventas,'clientes'=>$clientes,'productos'=>$productos]);
+            $tiempo= Carbon::now('America/Guatemala');
+            $fec = $tiempo->toDateString();
+            return view ('venta.index', ['ventas'=>$ventas,'clientes'=>$clientes,'productos'=>$productos, 'fec'=>$fec]);
         }catch(Exception $exception) {
             \Session::flash('message', 'Error'.$exception); 
             \Session::flash('alert-class', 'alert-warning'); 

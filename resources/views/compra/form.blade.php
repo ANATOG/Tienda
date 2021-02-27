@@ -6,10 +6,10 @@
         <div class="row">        
             <div class="form-group col-md-4">
                  
-                <input type="date" class="form-control" value="<?php echo date("Y-m-d");?>" id="nombre" name="nombre"  disabled>        
+                <input type="date" class="form-control" value="{{$fecha}}" id="fecha" name="fecha">        
             </div>
             <div class="form-group col-md-8"> 
-                <select class="form-control selectpicker" name="idCliente" id="idCliente" required data-live-search="true">                                                            
+                <select class="form-control selectpicker" name="idProveedor" id="idProveedor" required data-live-search="true">                                                            
                     <option value="" selected>Seleccione proveedor</option>                            
                         @foreach($proveedores as $p)
                             <option value="{{$p->id}}">{{$p->nombre}}</option>    
@@ -27,25 +27,16 @@
         <br>
     
         <div class="row">
-            <div class="form-group col-md-4"> 
-                <select class="form-control selectpicker" name="id_productoc" id="id_productoc" data-live-search="true" data-default-value="">                                                            
-                    <option value="" selected disabled>Seleccione producto</option>                            
-                    @foreach($productos as $prod)                            
-                    <option value="{{$prod->id}}_{{$prod->existencia}}_{{$prod->precioVenta}}_{{$prod->precioMayorista}}_{{$prod->precioCosto}}">{{$prod->nombre}}</option>                                    
-                    @endforeach
+            <div class="form-group col-md-5"> 
+                <select class="form-control selectpicker" name="id_producto" id="id_producto" data-live-search="true" data-default-value="">                                                            
+                    <option value="" selected disabled>Seleccione producto</option>   
                 </select>
             </div>
-            <div class="form-group col-md-2">
-                  
-                <input type="number" id="cantidadc" name="cantidadc" class="form-control" placeholder="Cantidad"  min="1" pattern="[0-9]{0,15}" disabled>
+            <div class="form-group col-md-2">                  
+                <input type="number" id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad"  min="1" pattern="[0-9]{0,15}" disabled>
             </div>
-            <div class="form-group col-md-2">
-                <input type="number" disabled id="stockc" name="stockc" class="form-control" placeholder="Stock" pattern="[0-9]{0,15}">
-            </div>
-            <div class="form-group col-md-2">
-                <select class="form-control" name="precio_ventac" id="precio_ventac" disabled>                                                            
-                    <option value="" selected disabled>Precio</option> 
-                </select>
+            <div class="form-group col-md-3">                                                           
+                    <input type="number" step="0.01" min="0.01" class="form-control" placeholder="Ingrese precio" id="precio" name="precio" disabled> 
             </div>
             <div class="form-group col-md-2">   
                 <button type="button" id="agregarc" class="btn btn-danger round-button"><i class="fa fa-plus "></i></button>  
