@@ -61,14 +61,14 @@
                             <td>{{ $v->cliente}}</td>
                             <td>Q.{{ $v->total }}</td>
                             <td>
-                                <a href="{{url('pdfVenta',$v->id)}}" target="_blank">                                          
+                                <a href="{{url('pdfventa',$v->id)}}" target="_blank">                                          
                                     <button type="button" class="btn btn-warning btn-sm">
                                         <i class="fas fa-eye"></i>
                                     </button> &nbsp;
                                  </a> 
                             </td>
                             <td>
-                                <a href="{{url('pdfVenta',$v->id)}}" target="_blank">                                          
+                                <a href="{{url('pdfventa',$v->id)}}" target="_blank">                                          
                                     <button type="button" class="btn btn-danger btn-sm">
                                       <i class="fas fa-file-pdf fa-1x"></i>
                                     </button> &nbsp;
