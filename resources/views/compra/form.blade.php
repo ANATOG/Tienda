@@ -1,6 +1,6 @@
     <div class="container  justify-content-center align-items-center bg-light">
         <div class="row justify-content-center align-items-center">
-            <h3>Datos de venta</h3>
+            <h3>Datos de compra</h3>
         </div>
         <br>
         <div class="row">        
@@ -10,9 +10,9 @@
             </div>
             <div class="form-group col-md-8"> 
                 <select class="form-control selectpicker" name="idCliente" id="idCliente" required data-live-search="true">                                                            
-                    <option value="" selected>Seleccione cliente</option>                            
-                        @foreach($clientes as $c)
-                            <option value="{{$c->id}}">{{$c->nombre}}</option>    
+                    <option value="" selected>Seleccione proveedor</option>                            
+                        @foreach($proveedores as $p)
+                            <option value="{{$p->id}}">{{$p->nombre}}</option>    
                         @endforeach
                 </select>
             </div>
@@ -22,7 +22,7 @@
     <hr>
     <div class="container  justify-content-center align-items-center bg-light">
         <div class="row justify-content-center align-items-center">
-            <h3>Detalle de venta</h3>
+            <h3>Detalle de compra</h3>
         </div>
         <br>
     
