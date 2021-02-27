@@ -12,6 +12,7 @@ use App\Cliente;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use App\DetalleVenta;
+use App\PDF;
 
 class VentaController extends Controller
 {
@@ -129,6 +130,11 @@ class VentaController extends Controller
             return redirect()->back();
         }
         
+    }
+
+    public function pdf(Request $request,$id){         
+        $pdf= \PDF::loadView('pdf.venta');
+        return $pdf->download('venta-.pdf');
     }
 
 }
