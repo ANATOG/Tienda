@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Http\Controllers;
 use App\Compra;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Redirect;
 use App\Producto;
 use App\Proveedor;
 use Illuminate\Support\Facades\DB;
-use Exception;
 use App\DetalleCompra;
+use Exception;
 
 class CompraController extends Controller
 {
@@ -37,7 +37,9 @@ class CompraController extends Controller
                 ->get();
             //$totalMonth= Pedido::totalMonth();
             //$totalMounthCount= Pedido::totalMonthCount();
-            return view ('compra.index', ['compras'=>$compras,'proveedores'=>$proveedores,'productos'=>$productos]);
+            $tiempo= Carbon::now('America/Guatemala');
+            $fecha = $tiempo->toDateString();
+            return view ('compra.index', ['compras'=>$compras,'proveedores'=>$proveedores,'productos'=>$productos, 'fecha'=>$fecha]);
         }catch(Exception $exception) {
             \Session::flash('message', 'Error'.$exception); 
             \Session::flash('alert-class', 'alert-warning'); 
@@ -98,26 +100,26 @@ class CompraController extends Controller
             \Session::flash('alert-class', 'alert-danger'); 
             return redirect()->back();  
         }
-    } 
+    } */
 
     
     public function destroy(Request $request)
     {
-        $ventas  = Venta::findOrFail($request->id_venta);
+        $compras  = Compra::findOrFail($request->id_compra);
         try {
             DB::beginTransaction();
-            if($ventas->estado=='1')
+            if($compras->estado=='1')
             {
-                $ventas->estado='0';
-                $ventas->save();
-                $detalles = DetalleVenta::select('detalle_ventas.*')->where('detalle_ventas.idVenta', '=', $ventas->id)->get();
+                $compras->estado='0';
+                $compras->save();
+                $detalles = DetalleCompra::select('detalle_compras.*')->where('detalle_compras.idCompra', '=', $compras->id)->get();
                 foreach($detalles as $d){
-                    DB::statement('call devuelve_stocks(?,?)', [$d->idProductos,$d->cantidad]);
+                    DB::statement('call quita_stocks(?,?)', [$d->idProducto,$d->cantidad]);
                 }
                 
             }
             DB::commit();
-            return Redirect::to("venta");
+            return Redirect::to("compra");
         
 
         }catch(Exception $exception) {
@@ -126,5 +128,5 @@ class CompraController extends Controller
             \Session::flash('alert-class', 'alert-danger'); 
             return redirect()->back();
         }        
-    }*/
+    }
 }
