@@ -48,6 +48,7 @@
                             <th>Nombre</th>                            
                             <th>Dirección</th>
                             <th>Télefono</th>
+                            <th>Tipo</th>
                             <th>Estado</th>
                             <th>Editar</th>
                             <th>Cambiar estado</th>
@@ -61,7 +62,7 @@
                             <td>{{ $c->nombre }}</td>
                             <td>{{ $c->direccion }}</td>
                             <td>{{ $c->telefono }}</td>
-
+                            <td>{{ $c->tipo }}</td>
                             <td> 
                                     @if($c->condicion=="1")
                                         <button type="button" class="btn btn-success btn-sm">
@@ -78,7 +79,7 @@
                             </td>
 
                             <td>
-                                <button type="button" class="btn btn-secondary btn-md" data-id_cliente="{{$c->id}}" data-nombre="{{$c->nombre}}" data-codigo="{{$c->codigo}}" data-direccion="{{$c->direccion}}" data-telefono="{{$c->telefono}}" data-toggle="modal" data-target="#abrirmodalEditarCli">
+                                <button type="button" class="btn btn-secondary btn-md" data-id_cliente="{{$c->id}}" data-nombre="{{$c->nombre}}" data-codigo="{{$c->codigo}}" data-direccion="{{$c->direccion}}" data-telefono="{{$c->telefono}}" data-tipo="{{$c->tipo}}" data-toggle="modal" data-target="#abrirmodalEditarCli">
 
                                   <i class="fa fa-edit fa-1x"></i> Editar
                                 </button> &nbsp;

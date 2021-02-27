@@ -28,6 +28,16 @@
     </div>
 </div>
 
+<div class="form-group row">
+    <label class="col-md-3 form-control-label"  for="titulo">Tipo</label>
+    <div class="col-md-9">
+        <select class="form-control" name="tipo" id="tipo" required>								
+            <option value="Normal">Normal</option>
+            <option value="Mayorista">Mayorista</option>
+        </select>    
+    </div> 							   
+</div>
+
 <div class="modal-footer">
     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times fa-2x"></i> Cerrar</button>
     <button type="submit" class="btn btn-success"><i class="fa fa-save fa-2x"></i> Guardar</button>

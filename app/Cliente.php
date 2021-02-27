@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     protected $table = 'clientes';
-    protected $fillable = ['codigo', 'nombre', 'direccion', 'telefono', 'condicion'];
+    protected $fillable = ['codigo', 'nombre', 'direccion', 'telefono', 'tipo', 'condicion'];
 
     public function ventas()
     {

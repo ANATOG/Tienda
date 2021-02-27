@@ -57,6 +57,7 @@ class ClienteController extends Controller
             $clientes->codigo= $request->codigo;
             $clientes->telefono= $request->telefono;
             $clientes->direccion= $request->direccion;
+            $clientes->tipo= $request->tipo;
             $clientes->condicion='1';
             $clientes->save();
             DB::commit();
@@ -87,6 +88,7 @@ class ClienteController extends Controller
             $clientes->codigo= $request->codigo;
             $clientes->telefono= $request->telefono;
             $clientes->direccion= $request->direccion;
+            $clientes->tipo= $request->tipo;
             $clientes->condicion='1';
             $clientes->save();
             DB::commit();

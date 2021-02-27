@@ -81,12 +81,14 @@
            var codigo_modal_editar = botoneditar.data('codigo')
            var telefono_modal_editar = botoneditar.data('telefono')
            var direccion_modal_editar = botoneditar.data('direccion')
+           var tipo_modal_editar = botoneditar.data('tipo')
            var id_cliente = botoneditar.data('id_cliente')
            var modal = $(this)
            modal.find('.modal-body #nombre').val(nombre_modal_editar);
            modal.find('.modal-body #codigo').val(codigo_modal_editar);
            modal.find('.modal-body #telefono').val(telefono_modal_editar);
            modal.find('.modal-body #direccion').val(direccion_modal_editar);
+           modal.find('.modal-body #tipo').val(tipo_modal_editar);
            modal.find('.modal-body #id_cliente').val(id_cliente);
        })
        /*INICIO ventana modal para cambiar estado de Cliente*/
