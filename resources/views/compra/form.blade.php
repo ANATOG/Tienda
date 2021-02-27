@@ -3,12 +3,14 @@
             <h3>Datos de compra</h3>
         </div>
         <br>
-        <div class="row">        
-            <div class="form-group col-md-4">
-                 
+        <div class="row">             
+            <div class="form-group col-md-3">                                                           
+                <input type="number"  min="1" class="form-control" placeholder="#Compra" id="numcompra" name="numcompra"> 
+            </div>       
+            <div class="form-group col-md-3">                 
                 <input type="date" class="form-control" value="{{$fecha}}" id="fecha" name="fecha">        
             </div>
-            <div class="form-group col-md-8"> 
+            <div class="form-group col-md-6"> 
                 <select class="form-control selectpicker" name="idProveedor" id="idProveedor" required data-live-search="true">                                                            
                     <option value="" selected>Seleccione proveedor</option>                            
                         @foreach($proveedores as $p)

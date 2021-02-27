@@ -47,37 +47,37 @@ class CompraController extends Controller
         }
     }
 
-   /*public function store(Request $request){         
+   public function store(Request $request){         
          
         try{
             DB::beginTransaction();
             $tiempo= Carbon::now('America/Guatemala');
-            $venta = new Venta();
-            $venta->idCliente = $request->idCliente;
-            //$venta->idUsuario =\Auth::user()->id;      
-            $venta->idSucursal = 1;
-            //$venta->numventa = $request->num_ventac;
-            $venta->fecha_venta = $tiempo->toDateString();
-            $venta->total=$request->total_pagarc;
-            $venta->estado = 1;
-            $venta->save();
+            $compra = new Compra();
+            $compra->idProveedor = $request->idProveedor;
+            //$compra->idUsuario =\Auth::user()->id;      
+            $compra->idSucursal = 1;
+            $compra->numcompra = $request->num_compra;
+            $compra->fechacom = $tiempo->toDateString();
+            $compra->total=$request->total_pagarc;
+            $compra->estado = 1;
+            $compra->save();
     
-            $id_producto=$request->id_productoc;
-            $cantidad=$request->cantidadc;
-            $precio=$request->precio_ventac;
+            $id_producto=$request->id_producto;
+            $cantidad=$request->cantidad;
+            $precio=$request->precio;
     
             
             //Recorro todos los elementos
             $cont=0;
     
             while($cont < count($id_producto)){    
-                $detalle = new DetalleVenta();
+                $detalle = new DetalleCompra();
                 /*enviamos valores a las propiedades del objeto detalle*/
                 /*al idcompra del objeto detalle le envio el id del objeto venta, que es el objeto que se ingresó en la tabla ventas de la bd*/
                 /*el id es del registro de la venta*/
-               /* $detalle->idVenta = $venta->id;
+               $detalle->idCompra = $compra->id;
                 if(isset($id_producto[$cont])){
-                    $detalle->idProductos = $id_producto[$cont];
+                    $detalle->idProducto = $id_producto[$cont];
                 }
                 //$detalle->idProductos = $id_producto[$cont];
                 if(isset($cantidad[$cont])){
@@ -92,7 +92,7 @@ class CompraController extends Controller
                 $cont=$cont+1;
             }                
             DB::commit();
-            return Redirect::to('venta');
+            return Redirect::to('compra');
     
         }catch(Exception $e){        
             DB::rollBack();
@@ -100,7 +100,7 @@ class CompraController extends Controller
             \Session::flash('alert-class', 'alert-danger'); 
             return redirect()->back();  
         }
-    } */
+    } 
 
     
     public function destroy(Request $request)

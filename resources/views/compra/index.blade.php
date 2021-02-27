@@ -166,6 +166,8 @@
             for (i=0;i<response.length;i++){
                 $("#id_producto").append("<option value='"+response[i].id+"'>"+response[i].nombre+"</option>");
             }
+            //$('#idProveedor').prop('disabled', 'disabled');
+            $('#idProveedor option:not(:selected)').attr('disabled',true);
         });   
     });
 
@@ -194,7 +196,9 @@
         precio= $("#precio").val();
 
         if (checkId(productoc)) {
+            limpiarc();
   	        return alert('El producto ya esta agregado');
+
         }
         
         if(id_producto !="" && cantidad!="" && cantidad>0  && precio!=""){
@@ -220,8 +224,7 @@
 
     function limpiarc(){
         $("#cantidad").val("");
-        $("#precio").val("");
-        $("#id_producto").empty();      
+        $("#precio").val("");      
         document.getElementById("cantidad").disabled = true;
         document.getElementById("precio").disabled = true;
         
