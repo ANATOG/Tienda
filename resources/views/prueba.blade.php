@@ -188,13 +188,15 @@
            modal.find('.modal-body #id_vencido').val(id_vencido);
        })
       
-       $('#anularventa').on('show.bs.modal', function (event) {
+       $('#anularCompra').on('show.bs.modal', function (event) {
            var botoncambiarestado = $(event.relatedTarget) 
-           var id_venta = botoncambiarestado.data('id_venta')
+           var id_compra = botoncambiarestado.data('id_compra')
            var modal = $(this)
            
-           modal.find('.modal-body #id_venta').val(id_venta);
+           modal.find('.modal-body #id_compra').val(id_compra);
        })
+
+
       
        $('#idCliente').selectize({
              sortField: 'text'
