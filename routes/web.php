@@ -27,4 +27,5 @@ Route::resource('compra', 'CompraController');
 Route::resource('venta', 'VentaController'); 
 Route::get('selectProducto/{id}','ProductoController@selectProducto');
 Route::resource('reporte', 'ReporteController');
+Route::get('/pdf', 'ReporteController@pdf')->name('pdf');
 Route::get('/pdfventa/{id}', 'VentaController@pdf')->name('pdfventa');
