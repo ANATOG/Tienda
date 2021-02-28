@@ -68,6 +68,7 @@ class VentaController extends Controller
             $id_producto=$request->id_productoc;
             $cantidad=$request->cantidadc;
             $precio=$request->precio_ventac;
+            $descuento=$request->descuentoc;
     
             
             //Recorro todos los elementos
@@ -90,7 +91,10 @@ class VentaController extends Controller
                 if(isset($precio[$cont])){
                     $detalle->precio = $precio[$cont];
                 }
-                //$detalle->precio = $precio[$cont];         
+                //$detalle->precio = $precio[$cont];  
+                if(isset($descuento[$cont])){
+                    $detalle->descuento = $descuento[$cont];
+                }      
                 $detalle->save();
                 $cont=$cont+1;
             }                

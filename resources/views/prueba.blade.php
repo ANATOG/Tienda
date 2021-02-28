@@ -204,6 +204,9 @@
        $('#id_productoc').selectize({
            sortField: 'text'
        })
+       $('#idProveedor').selectize({
+           sortField: 'text'
+       })
     </script>
 </body>
 </html>

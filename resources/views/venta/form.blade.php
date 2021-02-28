@@ -1,4 +1,4 @@
-    <div class="container  justify-content-center align-items-center bg-light">
+    <div class="container  justify-content-center align-items-center bg-light" id="encabezado">
         <div class="row justify-content-center align-items-center">
             <h3>Datos de venta</h3>
         </div>
@@ -20,7 +20,7 @@
     </div>                                                
 
     <hr>
-    <div class="container  justify-content-center align-items-center bg-light">
+    <div class="container  justify-content-center align-items-center bg-light" type="hidden" id="vista">
         <div class="row justify-content-center align-items-center">
             <h3>Detalle de venta</h3>
         </div>
@@ -43,9 +43,8 @@
                 <input type="number" disabled id="stockc" name="stockc" class="form-control" placeholder="Stock" pattern="[0-9]{0,15}">
             </div>
             <div class="form-group col-md-2">
-                <select class="form-control" name="precio_ventac" id="precio_ventac" disabled>                                                            
-                    <option value="" selected disabled>Precio</option> 
-                </select>
+                <input type="number" step="0.01" min="0.01" class="form-control" placeholder="Precio" name="precio_ventac" id="precio_ventac" readonly> 
+                
             </div>
             <div class="form-group col-md-2">   
                 <button type="button" id="agregarc" class="btn btn-danger round-button"><i class="fa fa-plus "></i></button>  
@@ -59,20 +58,26 @@
         <table id="detallesc" class="table table-hover table-sm table-responsive">
             <thead class="bg-danger text-white">
                 <tr>
-                    <th>Eliminar</th>
+                    <th>Quitar</th>
                     <th>Producto</th>
                     <th>Precio(Q.)</th>
-                    <th>Cantidad</th>
+                    <th>Cant.</th>
                     <th>SubTotal</th>
+                    <th>Desc.(Q.)</th>
+
                 </tr>
             </thead>                                    
             <tfoot class="bg-light">
                 <tr>
-                    <th  colspan="4"><p align="right">TOTAL:</p></th>
+                    <th  colspan="5"><p align="right">SUBTOTAL:</p></th>
                     <th><p align="right"><span id="totalc">Q. 0.00</span> </p></th>
                 </tr>
                 <tr>
-                    <th  colspan="4"><p align="right">TOTAL PAGAR:</p></th>
+                    <th  colspan="5"><p align="right">DESCUENTO:</p></th>
+                    <th><p align="right"><span id="descuentoc">Q. 0.00</span> </p></th>
+                </tr>
+                <tr>
+                    <th  colspan="5"><p align="right">TOTAL PAGAR:</p></th>
                     <th><p align="right"><span align="right" id="total_pagar_htmlc">Q. 0.00</span> <input type="hidden" name="total_pagarc" id="total_pagarc"></p></th>
                 </tr> 
             </tfoot>

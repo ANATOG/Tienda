@@ -47,7 +47,6 @@
                             <th>Fecha</th>
                             <th>Cliente</th>
                             <th>Total</th>
-                            <th>Ver</th>
                             <th>PDF</th>
                             <th>Anular</th>
                         </tr>
@@ -60,13 +59,6 @@
                             <td>{{ $v->fecha_venta }}</td>
                             <td>{{ $v->cliente}}</td>
                             <td>Q.{{ $v->total }}</td>
-                            <td>
-                                <a href="{{url('pdfventa',$v->id)}}" target="_blank">                                          
-                                    <button type="button" class="btn btn-warning btn-sm">
-                                        <i class="fas fa-eye"></i>
-                                    </button> &nbsp;
-                                 </a> 
-                            </td>
                             <td>
                                 <a href="{{url('pdfventa',$v->id)}}" target="_blank">                                          
                                     <button type="button" class="btn btn-danger btn-sm">
@@ -160,30 +152,30 @@
         agregarc();
     });
 
+    $("#idCliente").change(function(event)
+    {
+        $('#idCliente')[0].selectize.lock(); //bloquear select
+        $("#vista").show();   
+    });
+
     var contc=0;
     totalc=0;
-    subtotalc=[];    
+    total=0;
+    desc=0;
+    subtotalc=[];  
+    descuentoc=[];  
     $("#guardarc").hide();
+    $("#vista").hide();
     $("#id_productoc").change(mostrarValoresc);
 
     function mostrarValoresc(){
-        $("#precio_ventac").empty(); //limpiar el select de precios
-        $("#precio_ventac").prepend('<option selected value="" disabled>Precio</option>');
         datosProductoc = document.getElementById('id_productoc').value.split('_');
 
         //habilitar el input y select de cantidad y precio
         $("#stockc").val(datosProductoc[1]);
+        $("#precio_ventac").val(datosProductoc[2]);
         document.getElementById("cantidadc").disabled = false;
         document.getElementById("precio_ventac").disabled = false;
-
-        ///agregar precios al select
-        var x = document.getElementById('precio_ventac');
-        for ( i = 2; i <= 4; i += 1 ) {
-            var option = document.createElement("option");
-            option.text = datosProductoc[i];
-            option.value = parseFloat(datosProductoc[i]).toFixed(2);
-            x.add(option); 
-        }
     } 
 
     function agregarc(){
@@ -192,9 +184,10 @@
         productoc= $("#id_productoc option:selected").text();
         cantidadc= $("#cantidadc").val();
         precio_ventac= $("#precio_ventac").val();
+        cliente=$("#idCliente").val();
 
         stockc= $("#stockc").val();
-        impuestoc=20;
+        precioMayorista= datosProductoc[3];
 
         if (checkId(productoc)) {
   	        return alert('El producto ya esta agregado');
@@ -202,10 +195,22 @@
         
         if(id_productoc !="" && cantidadc!="" && cantidadc>0  && precio_ventac!=""){
             if(parseInt(stockc)>=parseInt(cantidadc)){
-                subtotalc[contc]=(cantidadc*precio_ventac);
-                totalc= totalc+subtotalc[contc];
+                if (cliente==='1'){
+                    subtotalc[contc]=(cantidadc*precio_ventac);
+                    descuentoc[contc]=0;
+                    totalc= totalc+subtotalc[contc];
+                    desc= desc+descuentoc[contc];
+                    total= total+subtotalc[contc]-descuentoc[contc];
+                }else{
+                    subtotalc[contc]=(cantidadc*precio_ventac);
+                    descuentoc[contc]=subtotalc[contc]-(cantidadc*precioMayorista);
+                    totalc= totalc+subtotalc[contc];
+                    desc= desc+descuentoc[contc];
+                    total= total+subtotalc[contc]-descuentoc[contc];
+                }
+                
                 //<td><input type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>
-                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times">      </i></button></td> <td for="id"><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input readonly type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>  <td><input readonly type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></tr>';
+                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times">      </i></button></td> <td for="id"><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input style="width : 150px;" readonly type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>  <td><input style="width : 100px;" readonly type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></td> <td><input style="width : 150px;" type="number" class="form-control" name="descuentoc[]" value="'+parseFloat(descuentoc[contc]).toFixed(2)+'"></td></tr>';
             
                 contc++;
                 limpiarc();
@@ -241,7 +246,8 @@
 
     function totalesc(){
         $("#totalc").html("Q. " + totalc.toFixed(2));
-        total_pagarc=totalc;
+        $("#descuentoc").html("Q. " + desc.toFixed(2));
+        total_pagarc=total;
         $("#total_pagar_htmlc").html("Q. " + total_pagarc.toFixed(2));
         $("#total_pagarc").val(total_pagarc.toFixed(2));
     }
@@ -256,10 +262,13 @@
 
     function eliminarc(indexc){
         totalc=totalc-subtotalc[indexc];
-        total_pagar_htmlc = totalc;
+        desc= desc-descuentoc[indexc];
+        total_pagar_htmlc= totalc-desc;
+        //total_pagar_htmlc = totalc;
 
         $("#totalc").html("Q." + totalc.toFixed(2));
         $("#total_pagar_htmlc").html("Q." + total_pagar_htmlc.toFixed(2));
+        $("#descuentoc").html("Q. " + desc.toFixed(2));
         $("#total_pagarc").val(total_pagar_htmlc.toFixed(2));
 
         $("#filac" + indexc).remove();

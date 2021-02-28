@@ -48,7 +48,6 @@
                             <th>Fecha</th>
                             <th>Proveedor</th>
                             <th>Total</th>
-                            <th>Ver</th>
                             <th>PDF</th>
                             <th>Anular</th>
                         </tr>
@@ -62,13 +61,6 @@
                             <td>{{ $c->fechacom }}</td>
                             <td>{{ $c->proveedor}}</td>
                             <td>Q.{{ $c->total }}</td>
-                            <td>
-                                <a href="{{url('pdfCompra',$c->id)}}" target="_blank">                                          
-                                    <button type="button" class="btn btn-warning btn-sm">
-                                        <i class="fas fa-eye"></i>
-                                    </button> &nbsp;
-                                 </a> 
-                            </td>
                             <td>
                                 <a href="{{url('pdfCompra',$c->id)}}" target="_blank">                                          
                                     <button type="button" class="btn btn-danger btn-sm">
@@ -165,10 +157,9 @@
             $("#id_producto").append("<option value=''>Seleccione</option>");
             for (i=0;i<response.length;i++){
                 $("#id_producto").append("<option value='"+response[i].id+"'>"+response[i].nombre+"</option>");
-            }
-            //$('#idProveedor').prop('disabled', 'disabled');
-            $('#idProveedor option:not(:selected)').attr('disabled',true);
-        });   
+            }            
+        }); 
+        $('#idProveedor')[0].selectize.lock(); //bloquear select  
     });
 
     $("#agregarc").click(function(){

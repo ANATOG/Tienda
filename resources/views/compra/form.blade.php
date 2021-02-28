@@ -38,7 +38,7 @@
                 <input type="number" id="cantidad" name="cantidad" class="form-control" placeholder="Cantidad"  min="1" pattern="[0-9]{0,15}" disabled>
             </div>
             <div class="form-group col-md-3">                                                           
-                    <input type="number" step="0.01" min="0.01" class="form-control" placeholder="Ingrese precio" id="precio" name="precio" disabled> 
+                <input type="number" step="0.01" min="0.01" class="form-control" placeholder="Ingrese precio" id="precio" name="precio" disabled> 
             </div>
             <div class="form-group col-md-2">   
                 <button type="button" id="agregarc" class="btn btn-danger round-button"><i class="fa fa-plus "></i></button>  
