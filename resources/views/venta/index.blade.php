@@ -92,7 +92,7 @@
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
                 <h4 class="modal-title">Registrar venta</h4>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close ">
+                <button id="cerrar" type="button" class="close text-white" data-dismiss="modal" aria-label="Close ">
                   <span aria-hidden="true">×</span>
                 </button>
             </div>
@@ -150,6 +150,10 @@
 
 <!-- JS para venta -->
 <script>
+    $('#nuevaventa').on('hidden.bs.modal', function (event) {
+        location.reload();
+    });
+    
     $("#agregarc").click(function(){
         agregarc();
     });

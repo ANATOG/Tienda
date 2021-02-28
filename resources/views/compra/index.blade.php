@@ -150,6 +150,10 @@
 
 <!-- JS para venta -->
 <script>
+    $('#nuevaCompra').on('hidden.bs.modal', function (event) {
+        location.reload();
+    });
+    
     $("#idProveedor").change(function(event)
     {
         $.get("/selectProducto/"+event.target.value+"", function(response, selectProducto){
