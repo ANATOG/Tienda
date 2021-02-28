@@ -1,166 +1,107 @@
-<!DOCTYPE>
-<html>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reporte de ventas</title>
-    <style>
-        body {
-        /*position: relative;*/
-        /*width: 16cm;  */
-        /*height: 29.7cm; */
-        /*margin: 0 auto; */
-        /*color: #555555;*/
-        background: #FFFFFF; 
-        font-family: Arial, sans-serif; 
-        font-size: 14px;
-        /*font-family: SourceSansPro;*/
-        }
- 
- 
-        #datos{
-        float: left;
-        margin-top: 0%;
-        margin-left: 2%;
-        margin-right: 2%;
-        /*text-align: justify;*/
-        }
- 
-        #encabezado{
-        text-align: center;
-        margin-left: 35%;
-        margin-right: 35%;
-        font-size: 15px;
-        }
- 
-        #fact{
-        /*position: relative;*/
-        float: right;
-        margin-top: 2%;
-        margin-left: 2%;
-        margin-right: 2%;
-        font-size: 20px;
-        background:#33AFFF;
-        }
- 
-        section{
-        clear: left;
-        }
- 
-        #cliente{
-        text-align: left;
-        }
- 
-        #faproveedor{
-        width: 40%;
-        border-collapse: collapse;
-        border-spacing: 0;
-        margin-bottom: 15px;
-        }
- 
-        #fac, #fv, #fa{
-        color: #FFFFFF;
-        font-size: 15px;
-        }
- 
-        #faproveedor thead{
-        padding: 20px;
-        background:#33AFFF;
-        text-align: left;
-        border-bottom: 1px solid #FFFFFF;  
-        }
- 
-        #faccomprador{
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-        margin-bottom: 15px;
-        }
- 
-        #faccomprador thead{
-        padding: 20px;
-        background: #33AFFF;
-        text-align: center;
-        border-bottom: 1px solid #FFFFFF;  
-        }
- 
-        #facproducto{
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-        margin-bottom: 15px;
-        }
- 
-        #facproducto thead{
-        padding: 20px;
-        background: #33AFFF;
-        text-align: center;
-        border-bottom: 1px solid #FFFFFF;  
-        }
- 
-    
-    </style>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Venta</title>
 
-    <body>
-    <div class="main"> 
-                <div class="container-fluid"> 
-                        
+<style type="text/css">
+    * {
+        font-family: Verdana, Arial, sans-serif;
+    }
+    table{
+        font-size: x-small;
+    }
+    tfoot tr td{
+        font-weight: bold;
+        font-size: x-small;
+    }
+    .gray {
+        background-color: lightgray
+    }
+</style>
 
-                        <table class="table table-bordered table-striped table-sm">
-                            <thead>
-                          
-                                <tr class="bg-primary">
+</head>
+<body>
 
-                                    <th>Orden</th>
-                                    <th>Estacion</th>
-                                    <th>servicio</th>
-                                    <th>distancia</th>
+  <table width="100%">
+    <tr>
+        <td valign="top"><img src="{{asset('images/meteor-logo.png')}}" alt="" width="150"/></td>
+        <td align="right">
+            <h3>Shinra Electric power company</h3>
+            <pre>
+                Company representative name
+                Company address
+                Tax ID
+                phone
+                fax
+            </pre>
+        </td>
+    </tr>
 
-                                </tr>
-                           
-                            </thead>
-                            <tbody>
-                               
-                                <tr>
-                                <input type="hidden" >
-                                
-                                   
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <input type="hidden" >
-                                   
-                                </tr>
-                                
-                        </tbody>
-                        </table>
-                        <table class="table table-bordered table-striped table-sm">
-                            <thead>
-                                
-                                    <tr class="bg-">
-                                                <th>Distancia Total de la Linea </th>
-                                                
-                                    </tr>
-                            </thead> 
-                            <tbody>
-                                    <tr>
-                                        <th>mts</th>
-                                    </tr>   
-                            </tbody>   
-                        </table>        
-                    </div>
-                    </div>
-                </div>
-        <br>
-        <br>
-        <footer>
-             
-             <div >
-                <p >
-                    <b>Transmetro Guatemala 2019
-                </p>
-            </div>
-        </footer>
-    </body>
+  </table>
+
+  <table width="100%">
+    <tr>
+        <td><strong>Tienda:</strong> Nombre de la tienda</td>
+        <td><strong>Cliente:</strong> Nombre Cliente</td>
+    </tr>
+
+  </table>
+
+  <br/>
+
+  <table width="100%">
+    <thead style="background-color:#c82333; color:white;">
+      <tr>
+        <th>#</th>
+        <th>Descripcion</th>
+        <th>Cantidad</th>
+        <th></th>
+        <th>Total $</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Playstation IV - Black</td>
+        <td align="right">1</td>
+        <td align="right">1400.00</td>
+        <td align="right">1400.00</td>
+      </tr>
+      <tr>
+          <th scope="row">1</th>
+          <td>Metal Gear Solid - Phantom</td>
+          <td align="right">1</td>
+          <td align="right">105.00</td>
+          <td align="right">105.00</td>
+      </tr>
+      <tr>
+          <th scope="row">1</th>
+          <td>Final Fantasy XV - Game</td>
+          <td align="right">1</td>
+          <td align="right">130.00</td>
+          <td align="right">130.00</td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3"></td>
+            <td align="right">Subtotal $</td>
+            <td align="right">1635.00</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td align="right">Tax $</td>
+            <td align="right">294.3</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td align="right">Total $</td>
+            <td align="right" class="gray">$ 1929.3</td>
+        </tr>
+    </tfoot>
+  </table>
+
+</body>
 </html>
