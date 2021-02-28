@@ -62,6 +62,7 @@ class VentaController extends Controller
             //$venta->numventa = $request->num_ventac;
             $venta->fecha_venta = $tiempo->toDateString();
             $venta->total=$request->total_pagarc;
+            $venta->costo=$request->costo_venta;
             $venta->estado = 1;
             $venta->save();
     

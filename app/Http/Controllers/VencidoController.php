@@ -9,6 +9,7 @@ use App\Producto;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class VencidoController extends Controller
 {
@@ -47,11 +48,22 @@ class VencidoController extends Controller
         
         try{
             DB::beginTransaction();
+            $tiempo= Carbon::now('America/Guatemala');
             $vencidos= new Vencido();
             $vencidos->idProducto= $request->idProducto;
             $vencidos->caducado= $request->caducado;
             $vencidos->idSucursal= '1';
             $vencidos->condicion='1';
+            $vencidos->fecha = $tiempo->toDateString();
+            $perd= Producto::select('precioCosto')
+            ->where('id','=',$request->idProducto)
+            ->get();
+            foreach($perd as $p)
+            {
+                $perdida=$p->precioCosto*$request->caducado;
+            }
+            
+            $vencidos->perdida=$perdida;
             $vencidos->save();
            // DB::statement('call llenado_stocks(?,?)', [1,$productos->id]);
             DB::commit();
@@ -59,7 +71,7 @@ class VencidoController extends Controller
 
         }catch(Exception $exception){
             DB::rollBack();
-            \Session::flash('message', 'Tu registro no se pudo guardar.'); 
+            \Session::flash('message', 'Tu registro no se pudo guardar.'.$exception); 
             \Session::flash('alert-class', 'alert-danger'); 
             return redirect()->back();        
         }

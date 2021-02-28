@@ -47,6 +47,7 @@
                             <th>Fecha</th>
                             <th>Cliente</th>
                             <th>Total</th>
+                            <th>Ganancia</th>
                             <th>PDF</th>
                             <th>Anular</th>
                         </tr>
@@ -59,6 +60,7 @@
                             <td>{{ $v->fecha_venta }}</td>
                             <td>{{ $v->cliente}}</td>
                             <td>Q.{{ $v->total }}</td>
+                            <td>Q.{{ $v->total-$v->costo}}</td>
                             <td>
                                 <a href="{{url('pdfventa',$v->id)}}" target="_blank">                                          
                                     <button type="button" class="btn btn-danger btn-sm">
@@ -161,8 +163,10 @@
     var contc=0;
     totalc=0;
     total=0;
+    costo=0;
     desc=0;
     subtotalc=[];  
+    subcosto=[];
     descuentoc=[];  
     $("#guardarc").hide();
     $("#vista").hide();
@@ -188,6 +192,7 @@
 
         stockc= $("#stockc").val();
         precioMayorista= datosProductoc[3];
+        precioCosto= datosProductoc[4];
 
         if (checkId(productoc)) {
   	        return alert('El producto ya esta agregado');
@@ -195,22 +200,20 @@
         
         if(id_productoc !="" && cantidadc!="" && cantidadc>0  && precio_ventac!=""){
             if(parseInt(stockc)>=parseInt(cantidadc)){
-                if (cliente==='1'){
-                    subtotalc[contc]=(cantidadc*precio_ventac);
-                    descuentoc[contc]=0;
-                    totalc= totalc+subtotalc[contc];
-                    desc= desc+descuentoc[contc];
-                    total= total+subtotalc[contc]-descuentoc[contc];
+                subtotalc[contc]=(cantidadc*precio_ventac);
+                subcosto[contc]=(cantidadc*precioCosto);
+                if (cliente==='1'){                   
+                    descuentoc[contc]=0;  
                 }else{
-                    subtotalc[contc]=(cantidadc*precio_ventac);
                     descuentoc[contc]=subtotalc[contc]-(cantidadc*precioMayorista);
-                    totalc= totalc+subtotalc[contc];
-                    desc= desc+descuentoc[contc];
-                    total= total+subtotalc[contc]-descuentoc[contc];
                 }
+                totalc= totalc+subtotalc[contc];
+                desc= desc+descuentoc[contc];
+                total= total+subtotalc[contc]-descuentoc[contc];
+                costo=costo+subcosto[contc];
                 
                 //<td><input type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>
-                var filac= '<tr class="selected" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times">      </i></button></td> <td for="id"><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input style="width : 150px;" readonly type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>  <td><input style="width : 100px;" readonly type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></td> <td><input style="width : 150px;" type="number" class="form-control" name="descuentoc[]" value="'+parseFloat(descuentoc[contc]).toFixed(2)+'"></td></tr>';
+                var filac= '<tr class="selected nres" id="filac'+contc+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminarc('+contc+');"><i class="fa fa-times">      </i></button></td> <td for="id"><input type="hidden" name="id_productoc[]" value="'+id_productoc+'">'+productoc+'</td> <td><input style="width : 150px;" readonly type="number" class="form-control" name="precio_ventac[]" value="'+parseFloat(precio_ventac).toFixed(2)+'"></td>  <td><input style="width : 100px;" readonly type="number" class="form-control" name="cantidadc[]" value="'+cantidadc+'"> </td> <td>Q. '+parseFloat(subtotalc[contc]).toFixed(2)+'</td></td> <td><input style="width : 150px;" type="number" class="form-control" name="descuentoc[]" value="'+parseFloat(descuentoc[contc]).toFixed(2)+'"></td></tr>';
             
                 contc++;
                 limpiarc();
@@ -248,8 +251,10 @@
         $("#totalc").html("Q. " + totalc.toFixed(2));
         $("#descuentoc").html("Q. " + desc.toFixed(2));
         total_pagarc=total;
+        costo_venta=costo;
         $("#total_pagar_htmlc").html("Q. " + total_pagarc.toFixed(2));
         $("#total_pagarc").val(total_pagarc.toFixed(2));
+        $("#costo_venta").val(costo_venta.toFixed(2));
     }
 
     function evaluarc(){
@@ -262,6 +267,7 @@
 
     function eliminarc(indexc){
         totalc=totalc-subtotalc[indexc];
+        costo=costo-subcosto[indexc];
         desc= desc-descuentoc[indexc];
         total_pagar_htmlc= totalc-desc;
         //total_pagar_htmlc = totalc;
@@ -270,8 +276,23 @@
         $("#total_pagar_htmlc").html("Q." + total_pagar_htmlc.toFixed(2));
         $("#descuentoc").html("Q. " + desc.toFixed(2));
         $("#total_pagarc").val(total_pagar_htmlc.toFixed(2));
+        $("#costo_venta").val(costo_venta.toFixed(2));
 
         $("#filac" + indexc).remove();
+        
+        var nres = 0;
+        $(".nres").each(function() {
+         nres++;
+        });
+        if(nres==0){
+            totalc=0;
+            total=0;
+            costo=0;
+            desc=0;
+            subtotalc=[];  
+            subcosto=[];
+            descuentoc=[];  
+        }
         evaluarc();
     }
 

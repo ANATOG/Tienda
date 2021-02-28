@@ -46,6 +46,8 @@
                             <th>No.</th>
                             <th>Producto</th>
                             <th>Vencido</th>
+                            <th>Perdida</th>
+                            <th>Fecha</th>
                             <th>Anular</th>
                         </tr>
                     </thead>
@@ -56,6 +58,8 @@
                             <td>{{ $v->id }}</td>
                             <td>{{ $v->producto }}</td>
                             <td>{{ $v->caducado }}</td>
+                            <td>Q. {{ $v->perdida }}</td>
+                            <td> {{ $v->fecha }}</td>
                             <td>
                             @if($v->condicion)
                                 <button type="button" class="btn btn-danger btn-sm" data-id_vencido="{{$v->id}}" data-toggle="modal" data-target="#cambiarEstadoVencido">

@@ -76,6 +76,7 @@
                     <th  colspan="5"><p align="right">DESCUENTO:</p></th>
                     <th><p align="right"><span id="descuentoc">Q. 0.00</span> </p></th>
                 </tr>
+                <input type="hidden" id="costo_venta" name="costo_venta"> 
                 <tr>
                     <th  colspan="5"><p align="right">TOTAL PAGAR:</p></th>
                     <th><p align="right"><span align="right" id="total_pagar_htmlc">Q. 0.00</span> <input type="hidden" name="total_pagarc" id="total_pagarc"></p></th>

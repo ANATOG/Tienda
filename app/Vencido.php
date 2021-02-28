@@ -10,7 +10,8 @@ class Vencido extends Model
     protected $fillable = [
                         'caducado',  
                         'idSucursal',
-                        'idProducto'];
+                        'idProducto',
+                        'perdida'];
 
     public function producto(){
         return $this->belongsTo('App\Producto');

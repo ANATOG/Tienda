@@ -19,6 +19,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ProductoController' => $baseDir . '/app/Http/Controllers/ProductoController.php',
     'App\\Http\\Controllers\\ProveedorController' => $baseDir . '/app/Http/Controllers/ProveedorController.php',
+    'App\\Http\\Controllers\\ReporteController' => $baseDir . '/app/Http/Controllers/ReporteController.php',
     'App\\Http\\Controllers\\SucursalController' => $baseDir . '/app/Http/Controllers/SucursalController.php',
     'App\\Http\\Controllers\\VencidoController' => $baseDir . '/app/Http/Controllers/VencidoController.php',
     'App\\Http\\Controllers\\VentaController' => $baseDir . '/app/Http/Controllers/VentaController.php',

@@ -11,7 +11,8 @@ class Venta extends Model
                           'idSucursal',
                           'total',
                           'fecha_venta',
-                           'estado'];
+                          'estado',
+                          'costo'];
 
     public function sucursal(){
         return $this->belongsTo('App\Sucursal');
