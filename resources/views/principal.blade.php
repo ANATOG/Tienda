@@ -7,8 +7,8 @@
 
         <title>Tienda</title>
 
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="{{asset('css/all.css')}}" rel="stylesheet">
+        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
         <style>body { }
           .panel-body .btn:not(.btn-block) { width:200px;margin-bottom:50px; margin-left: 70px; margin-right: 20px;} 
           .round-button {height: 60px;
@@ -79,10 +79,10 @@
                           {{csrf_field()}}
                           </form>
                       </div>
-                      <div class="col-xl-4 ">
-                        <a href="{{url('sucursal')}}" 
+                      <div class="col-xl-4 " >
+                        <a aria-readonly="false" href="{{url('sucursal')}}" 
                           onclick="event.preventDefault(); document.getElementById('sucursal-form').submit();" class="btn btn-warning btn-lg" role="button"><i class="fas fa-store-alt"></i><br/>Sucursales</a>
-                          <form id="sucursal-form" action="{{url('sucursal')}}" method="GET" style="display: none;">
+                          <form id="sucursal-form" action="{{url('/')}}" method="GET" style="display: none;">
                           {{csrf_field()}}
                           </form>
                       </div>

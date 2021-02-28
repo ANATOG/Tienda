@@ -139,9 +139,23 @@ class VentaController extends Controller
         
     }
 
-    public function pdf(Request $request,$id){         
-        $pdf= \PDF::loadView('pdf.venta');
-        return $pdf->download('venta-.pdf');
+    public function pdf(Request $request,$id){
+    
+        $venta = Venta::latest()
+        ->join('clientes', 'ventas.idCliente', '=', 'clientes.id')
+        ->select('ventas.*', 'clientes.nombre as cliente', 'clientes.telefono as telefono',
+        'clientes.codigo as codigo', 'clientes.direccion as direccion')  
+        ->where('ventas.id', '=', $id)
+        ->get();
+
+        $detalles= DetalleVenta::latest()
+        ->join('productos', 'detalle_ventas.idProductos', '=', 'productos.id')
+        ->select('detalle_ventas.*', 'productos.nombre as producto')  
+        ->where('detalle_ventas.idVenta', '=', $id)
+        ->get();
+
+        $pdf= \PDF::loadView('pdf.venta',['venta'=>$venta, 'detalles'=>$detalles]);
+        return $pdf->download('venta-'.$id.'.pdf');
     }
 
 }

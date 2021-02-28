@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Venta</title>
-
+   
 <style type="text/css">
     * {
         font-family: Verdana, Arial, sans-serif;
@@ -15,9 +15,18 @@
         font-weight: bold;
         font-size: x-small;
     }
-    .gray {
-        background-color: lightgray
-    }
+
+    footer {
+            position: fixed;
+            bottom: 0cm;
+            left: 0cm;
+            right: 0cm;
+            height: 1.5cm;
+            background-color: #c82333; 
+            color: white;
+            text-align: center;
+            line-height: 35px;
+        }
 </style>
 
 </head>
@@ -25,15 +34,12 @@
 
   <table width="100%">
     <tr>
-        <td valign="top"><img src="{{asset('images/meteor-logo.png')}}" alt="" width="150"/></td>
+        <td valign="top"><img src="{{ asset('img/logo.png') }}" alt="logo" class="img-fluid"></td>
+        
         <td align="right">
-            <h3>Reporte</h3>
+            <h3>Tienda Chofo</h3>
+            <h3>Reporte de ganancias y perdidas</h3>
             <pre>
-                Company representative name
-                Company address
-                Tax ID
-                phone
-                fax
             </pre>
         </td>
     </tr>
@@ -42,66 +48,55 @@
 
   <table width="100%">
     <tr>
-        <td><strong>Tienda:</strong> Nombre de la tienda</td>
-        <td><strong>Cliente:</strong> Nombre Cliente</td>
+        <td><strong>Mes:</strong> {{$mes}}</td>
+        <td><strong>Año:</strong>{{$anio}}</td>
     </tr>
 
   </table>
 
   <br/>
 
-  <table width="100%">
+  <table width="100%" class="table table-bordered table-striped table-sm                                                                    ">
     <thead style="background-color:#c82333; color:white;">
       <tr>
         <th>#</th>
-        <th>Descripcion</th>
+        <th>Descripcion</th>  
         <th>Cantidad</th>
-        <th></th>
-        <th>Total $</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style="background-color:#f1f1f1;">
       <tr>
-        <th scope="row">1</th>
-        <td>Playstation IV - Black</td>
-        <td align="right">1</td>
-        <td align="right">1400.00</td>
-        <td align="right">1400.00</td>
+        <th scope="row">(+)</th>
+        <td>Ventas</td>
+        <td align="right">Q. {{$vendido}}</td>
       </tr>
       <tr>
-          <th scope="row">1</th>
-          <td>Metal Gear Solid - Phantom</td>
-          <td align="right">1</td>
-          <td align="right">105.00</td>
-          <td align="right">105.00</td>
+          <th scope="row">(-)</th>
+          <td>Costo de lo vendido</td>
+          <td align="right">Q. {{$costo}}</td>
       </tr>
       <tr>
-          <th scope="row">1</th>
-          <td>Final Fantasy XV - Game</td>
-          <td align="right">1</td>
-          <td align="right">130.00</td>
-          <td align="right">130.00</td>
+          <th scope="row">(=)</th>
+          <td>Ganancia en ventas</td>
+          <td align="right">Q. {{$vendido-$costo}}</td>
       </tr>
+      <tr>
+        <th scope="row">(-)</th>
+        <td>Perdida por vencidos</td>
+        <td align="right">Q. {{$vencido}}</td>
+    </tr>
     </tbody>
 
-    <tfoot>
+    <tfoot >
         <tr>
-            <td colspan="3"></td>
-            <td align="right">Subtotal $</td>
-            <td align="right">1635.00</td>
-        </tr>
-        <tr>
-            <td colspan="3"></td>
-            <td align="right">Tax $</td>
-            <td align="right">294.3</td>
-        </tr>
-        <tr>
-            <td colspan="3"></td>
-            <td align="right">Total $</td>
-            <td align="right" class="gray">$ 1929.3</td>
+            <td colspan="0"></td>
+            <td align="right" >Ganancia final</td>
+            <td align="right" style="background-color:#a52a36; color:white;">{{($vendido-$costo)-$vencido}}</td>
         </tr>
     </tfoot>
   </table>
-
+  <footer>
+    <p>Tienda Chofo </p>
+</footer>
 </body>
 </html>

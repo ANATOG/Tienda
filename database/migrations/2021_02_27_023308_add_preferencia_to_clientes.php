@@ -16,6 +16,8 @@ class AddPreferenciaToClientes extends Migration
         Schema::table('clientes', function (Blueprint $table) {
             $table->string('tipo', 15 )->after('telefono')->nullable;
         });
+        
+        DB::table('clientes')->insert(['nombre'=>'C/F', 'codigo'=>'11111', 'tipo'=>'Normal']);
     }
 
     /**

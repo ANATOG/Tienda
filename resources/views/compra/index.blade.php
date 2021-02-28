@@ -62,7 +62,7 @@
                             <td>{{ $c->proveedor}}</td>
                             <td>Q.{{ $c->total }}</td>
                             <td>
-                                <a href="{{url('pdfCompra',$c->id)}}" target="_blank">                                          
+                                <a href="{{url('pdfcompra',$c->id)}}" target="_blank">                                          
                                     <button type="button" class="btn btn-danger btn-sm">
                                       <i class="fas fa-file-pdf fa-1x"></i>
                                     </button> &nbsp;
@@ -85,7 +85,7 @@
         <!-- Fin ejemplo de tabla Listado -->
     </div>
 
-
+ 
    <!--Inicio del modal agregar/-->
    <div class="modal fade bd-example-modal-lg" id="nuevaCompra" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-danger modal-lg" role="document">

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Venta</title>
+<title>Compra</title>
    
 <style type="text/css">
     * {
@@ -37,11 +37,11 @@
         <td valign="top"><img src="{{ asset('img/logo.png') }}" alt="logo" class="img-fluid"></td>
         
         <td align="right">
-            <h3>Deposito El Carmen</h3>
-@foreach($venta as $v)
+            <h3>Compras Deposito El Carmen</h3>
+@foreach($compra as $c)
             <pre>
-                Fecha: {{$v->fecha_venta}}
-                Número de venta: {{$v->id}}
+                Fecha: {{$c->fechacom}}
+                Número de compra: {{$c->numcompra}}
             </pre>
         </td>
     </tr>
@@ -50,10 +50,10 @@
 
   <table width="100%">
     <tr> 
-        <td><strong>Código cliente:</strong> {{$v->codigo}}</td>       
-        <td><strong>Cliente:</strong> {{$v->cliente}}</td>
-        <td><strong>Dirección:</strong> {{$v->direccion}}</td>
-        <td><strong>Teléfono:</strong> {{$v->telefono}}</td>
+        <td><strong>NIT proveedor:</strong> {{$c->nit}}</td>       
+        <td><strong>Proveedor:</strong> {{$c->proveedor}}</td>
+        <td><strong>Dirección:</strong> {{$c->direccion}}</td>
+        <td><strong>Teléfono:</strong> {{$c->telefono}}</td>
     </tr>
 
   </table>
@@ -68,12 +68,10 @@
         <th>Cantidad</th>
         <th>Precio</th>
         <th>Subtotal</th>
-        <th>Descuento</th>
         
       </tr>
     </thead>
     <tbody style="background-color:#f1f1f1;">
-      {{$subtotal=0}} {{$descuento=0}}
       @foreach($detalles as $d)
         <tr>
           <th scope="row">{{$d->id}}</th>
@@ -81,29 +79,15 @@
           <td align="right">{{$d->cantidad}}</td>
           <td align="right">{{$d->precio}}</td>
           <td align="right">Q. {{number_format($d->precio * $d->cantidad,  2, ".", "")}} </td>
-          <td align="right">Q. {{$d->descuento}}</td>
         </tr>
-        {{$subtotal=$subtotal+($d->precio * $d->cantidad)}}
-        {{$descuento=$descuento+$d->descuento}}
       @endforeach      
     </tbody>
 
-    <tfoot >
+    <tfoot >      
         <tr>
-            <td colspan="4"></td>
-            <td align="right" >Subtotal</td>
-            <td align="right" style="background-color:#a52a36; color:white;">Q. {{number_format($subtotal,  2, ".", "")}}</td>
-        </tr>
-        <tr>
-          <td colspan="4"></td>
-          <td align="right">Descuento</td>
-          <td align="right"  style="background-color:#a52a36; color:white;">Q. {{number_format($descuento,  2, ".", "")}}</td>
-      </tr>
-        
-        <tr>
-            <td colspan="4"></td>
+            <td colspan="3"></td>
             <td align="right">Total</td>
-            <td align="right"  style="background-color:#a52a36; color:white;">Q. {{$v->total}}</td>
+            <td align="right"  style="background-color:#a52a36; color:white;">Q. {{$c->total}}</td>
         </tr>
     </tfoot>
   </table>

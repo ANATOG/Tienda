@@ -10,6 +10,7 @@ use App\Proveedor;
 use Illuminate\Support\Facades\DB;
 use App\DetalleCompra;
 use Exception;
+use App\PDF;
 
 class CompraController extends Controller
 {
@@ -128,5 +129,24 @@ class CompraController extends Controller
             \Session::flash('alert-class', 'alert-danger'); 
             return redirect()->back();
         }        
+    }
+
+    public function pdf(Request $request,$id){
+    
+        $compra = Compra::latest()
+        ->join('proveedores', 'compras.idProveedor', '=', 'proveedores.id')
+        ->select('compras.*', 'proveedores.nombre as proveedor', 'proveedores.nit as nit',
+        'proveedores.telefono as telefono', 'proveedores.direccion as direccion')  
+        ->where('compras.id', '=', $id)
+        ->get();
+
+        $detalles= DetalleCompra::latest()
+        ->join('productos', 'detalle_compras.idProducto', '=', 'productos.id')
+        ->select('detalle_compras.*', 'productos.nombre as producto')  
+        ->where('detalle_compras.idCompra', '=', $id)
+        ->get();
+
+        $pdf= \PDF::loadView('pdf.compra',['compra'=>$compra, 'detalles'=>$detalles]);
+        return $pdf->download('compra-'.$id.'.pdf');
     }
 }

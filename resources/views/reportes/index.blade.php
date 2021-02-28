@@ -46,26 +46,8 @@
                   <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <script type="text/javascript"> 
-                $(function() {
-                    $('.date-picker').datepicker( {
-                        closeText: 'Seleccionar',
-                        prevText: '<Ant',
-                        nextText: 'Sig>',
-                        currentText: 'Hoy',
-                        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-                        changeMonth: true,
-                        changeYear: true,
-                        showButtonPanel: true,
-                        dateFormat: 'MM yy',
-                        onClose: function(dateText, inst) { 
-                            $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
-                        }
-                    });
-                });
-            </script>
-                <style> .ui-datepicker-calendar { display: none; } 
+            <script>$('.datepicker').datepicker();</script>
+            <style> .ui-datepicker-calendar { display: none; } 
             </style>
 
 
@@ -75,7 +57,7 @@
                 <div class="form-group row">
                     <label class="col-md-3 form-control-label" for="text-input">Seleccione mes</label>
                     <div class="col-md-9">
-                        <input  name="startDate" id="startDate" class="date-picker form-control" />
+                        <input  name="startDate" id="startDate" class="date-picker form-control" type="date" required />
                     </div>
                 </div>
                 

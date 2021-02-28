@@ -20,6 +20,7 @@ class CrateSucursalesTable extends Migration
             $table->string('direccion', 200);
             $table->timestamps();
         });
+        DB::table('sucursales')->insert(['nombre'=>'Deposito El Carmen', 'direccion'=>'Terminal, zona 5']);
     }
 
     /**
