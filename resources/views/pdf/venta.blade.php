@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Venta</title>
-
+   
 <style type="text/css">
     * {
         font-family: Verdana, Arial, sans-serif;
@@ -15,9 +15,18 @@
         font-weight: bold;
         font-size: x-small;
     }
-    .gray {
-        background-color: lightgray
-    }
+
+    footer {
+            position: fixed;
+            bottom: 0cm;
+            left: 0cm;
+            right: 0cm;
+            height: 1.5cm;
+            background-color: #c82333; 
+            color: white;
+            text-align: center;
+            line-height: 35px;
+        }
 </style>
 
 </head>
@@ -25,15 +34,15 @@
 
   <table width="100%">
     <tr>
-        <td valign="top"><img src="{{asset('images/meteor-logo.png')}}" alt="" width="150"/></td>
+        <td valign="top"><img src="{{ asset('img/logo.png') }}" alt="logo" class="img-fluid"></td>
+        
         <td align="right">
-            <h3>Shinra Electric power company</h3>
+            <h3>Tienda Chofo</h3>
             <pre>
-                Company representative name
-                Company address
-                Tax ID
-                phone
-                fax
+                Tienda Chofo
+                Terminal zona 5
+                codigo tienda:
+                Teléfono:
             </pre>
         </td>
     </tr>
@@ -50,17 +59,17 @@
 
   <br/>
 
-  <table width="100%">
+  <table width="100%" class="table table-bordered table-striped table-sm                                                                    ">
     <thead style="background-color:#c82333; color:white;">
       <tr>
         <th>#</th>
-        <th>Descripcion</th>
+        <th>Descripcion</th>  
         <th>Cantidad</th>
-        <th></th>
+        <th>Precio</th>
         <th>Total $</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style="background-color:#f1f1f1;">
       <tr>
         <th scope="row">1</th>
         <td>Playstation IV - Black</td>
@@ -84,24 +93,22 @@
       </tr>
     </tbody>
 
-    <tfoot>
+    <tfoot >
         <tr>
             <td colspan="3"></td>
-            <td align="right">Subtotal $</td>
-            <td align="right">1635.00</td>
+            <td align="right" >Subtotal $</td>
+            <td align="right" style="background-color:#a52a36; color:white;">1635.00</td>
         </tr>
-        <tr>
-            <td colspan="3"></td>
-            <td align="right">Tax $</td>
-            <td align="right">294.3</td>
-        </tr>
+        
         <tr>
             <td colspan="3"></td>
             <td align="right">Total $</td>
-            <td align="right" class="gray">$ 1929.3</td>
+            <td align="right"  style="background-color:#a52a36; color:white;">$ 1929.3</td>
         </tr>
     </tfoot>
   </table>
-
+  <footer>
+    <p>Tienda Chofo </p>
+</footer>
 </body>
 </html>
